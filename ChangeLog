@@ -1,0 +1,9 @@
+Version 0.0.2 (April 17, 2021)
+-------------------------------
+
+* Initial working BETA version
+  * Ability to store the push due-date intervals per project
+  * Ability to store application-wide defaults
+  * Display (working) links to enable pushing the due-date
+  * [Hardcoded] Display the task-description as a mouseover-popup in collapsed view.
+  * Includes both german language-versions
