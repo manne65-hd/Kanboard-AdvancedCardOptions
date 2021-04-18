@@ -1,7 +1,7 @@
 <?php
 // Get the configuration for the project / task
-$ACO_board_config_method = $this->helper->AdvancedCardOptionsHelper->getBoardConfigMethod($project['id']);
-if ( $ACO_board_config_method === 'ACO_board_config_defaults'){
+$ACO_project_config_method = $this->helper->AdvancedCardOptionsHelper->getBoardConfigMethod($project['id']);
+if ( $ACO_project_config_method === 'ACO_project_config_defaults'){
     // load DEFAULT-values as of > ADMIN / Seetings / AdvancedCardOptions
     $ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getAppPushDueDays();
 } else {

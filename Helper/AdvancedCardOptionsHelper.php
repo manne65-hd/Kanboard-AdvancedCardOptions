@@ -18,7 +18,7 @@ class AdvancedCardOptionsHelper extends TaskHelper
 
     public function getBoardConfigMethod($project_id)
     {
-        return $this->projectMetadataModel->get($project_id, 'ACO_board_config_method', 'ACO_board_config_defaults');
+        return $this->projectMetadataModel->get($project_id, 'ACO_project_config_method', 'ACO_project_config_defaults');
     }
 
     public function getAppPushDueDays()
