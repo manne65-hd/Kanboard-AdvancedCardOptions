@@ -1,13 +1,7 @@
 <?php
 // Get the configuration for the project / task
-$ACO_project_config_method = $this->helper->AdvancedCardOptionsHelper->getBoardConfigMethod($project['id']);
-if ( $ACO_project_config_method === 'ACO_project_config_defaults'){
-    // load DEFAULT-values as of > ADMIN / Seetings / AdvancedCardOptions
-    $ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getAppPushDueDays();
-} else {
-    // load the custom settings for the current project
-    $ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getProjectPushDueDays($project['id']);
-}
+$ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
+$ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
 if ( array_sum($ACO_push_due_days) === 1 ){

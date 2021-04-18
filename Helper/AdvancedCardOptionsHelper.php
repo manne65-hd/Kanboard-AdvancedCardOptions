@@ -15,31 +15,36 @@ use Kanboard\Helper\TaskHelper;
  */
 class AdvancedCardOptionsHelper extends TaskHelper
 {
+    private $project_id;
+    public $project_config_method;
 
-    public function getBoardConfigMethod($project_id)
+    public function Initialize($project_id)
     {
-        return $this->projectMetadataModel->get($project_id, 'ACO_project_config_method', 'ACO_project_config_defaults');
+        $this->project_id = $project_id;
+        $this->project_config_method = $this->projectMetadataModel->get($this->project_id, 'ACO_project_config_method', 'ACO_project_config_defaults');
     }
 
-    public function getAppPushDueDays()
+    public function getProjectConfigMethod()
     {
-        $app_push_due_days = array();
-
-        $app_push_due_days[1] = $this->configModel->get('ACO_push_due_days_1', 0);
-        $app_push_due_days[2] = $this->configModel->get('ACO_push_due_days_2', 0);
-        $app_push_due_days[3] = $this->configModel->get('ACO_push_due_days_3', 0);
-
-        return $app_push_due_days;
+        $project_config_method = $this->projectMetadataModel->get($this->project_id, 'ACO_project_config_method', 'ACO_project_config_defaults');
+        return $project_config_method;
     }
 
-    public function getProjectPushDueDays($project_id)
+    public function getPushDueDays()
     {
-        $project_push_due_days = array();
+        $push_due_days = array();
 
-        $project_push_due_days[1] = $this->projectMetadataModel->get($project_id, 'ACO_push_due_days_1', 0);
-        $project_push_due_days[2] = $this->projectMetadataModel->get($project_id, 'ACO_push_due_days_2', 0);
-        $project_push_due_days[3] = $this->projectMetadataModel->get($project_id, 'ACO_push_due_days_3', 0);
+        if ($this->project_config_method === 'ACO_project_config_defaults'){
+            $push_due_days[1] = $this->configModel->get('ACO_push_due_days_1', 0);
+            $push_due_days[2] = $this->configModel->get('ACO_push_due_days_2', 0);
+            $push_due_days[3] = $this->configModel->get('ACO_push_due_days_3', 0);
+        } else {
+            $push_due_days[1] = $this->projectMetadataModel->get($this->project_id, 'ACO_push_due_days_1', 0);
+            $push_due_days[2] = $this->projectMetadataModel->get($this->project_id, 'ACO_push_due_days_2', 0);
+            $push_due_days[3] = $this->projectMetadataModel->get($this->project_id, 'ACO_push_due_days_3', 0);
+        }
 
-        return $project_push_due_days;
+        return $push_due_days;
     }
+
 }
