@@ -4,7 +4,7 @@
 
 <div class="confirm">
     <p class="alert alert-info">
-        <?= t('Do you really want to remove the due date of the task\n "%s" ?', $task['title']) ?>
+        <?= t('Do you really want to remove the due date of the task "%s" ?', $task['title']) ?>
     </p>
 
     <?= $this->modal->confirmButtons(
