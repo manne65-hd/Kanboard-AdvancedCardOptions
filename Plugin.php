@@ -17,6 +17,12 @@ class Plugin extends Base
         // Template HOOK-attachments ...
         $this->template->hook->attach('template:config:sidebar', 'AdvancedCardOptions:config/sidebar');
         $this->template->hook->attach('template:project:sidebar', 'AdvancedCardOptions:board/sidebar');
+        $this->template->hook->attach('template:task:dropdown', 'AdvancedCardOptions:task/dropdown');
+        $this->template->hook->attach('template:task:details:bottom', 'AdvancedCardOptions:task/bottom');
+
+        //Helpers
+        $this->helper->register('AdvancedCardOptionsHelper', '\Kanboard\Plugin\AdvancedCardOptions\Helper\AdvancedCardOptionsHelper');
+
     }
 
     public function onStartup() {
@@ -41,7 +47,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '0.0.3';
+        return '0.1.0';
     }
 
     public function getPluginHomepage()

@@ -1,29 +1,22 @@
 <?php
+// Get the configuration for the project / task
+$ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
+$ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+$ACO_remove_due_date = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
 
-    // Get the configuration for the current project
-    $ACO_board_config_method = $this->task->projectMetadataModel->get($project['id'], 'ACO_board_config_method', 'ACO_board_config_defaults');
-    if ( $ACO_board_config_method === 'ACO_board_config_defaults'){
-        // load DEFAULT-values as of > ADMIN / Seetings / AdvancedCardOptions
-        $ACO_push_due_days_1 = $this->app->configModel->get('ACO_push_due_days_1', 0);
-        $ACO_push_due_days_2 = $this->app->configModel->get('ACO_push_due_days_2', 0);
-        $ACO_push_due_days_3 = $this->app->configModel->get('ACO_push_due_days_3', 0);
-    } else {
-        // load the custom settings for the current project
-        $ACO_push_due_days_1 = $this->task->projectMetadataModel->get($project['id'], 'ACO_push_due_days_1', 0);
-        $ACO_push_due_days_2 = $this->task->projectMetadataModel->get($project['id'], 'ACO_push_due_days_2', 0);
-        $ACO_push_due_days_3 = $this->task->projectMetadataModel->get($project['id'], 'ACO_push_due_days_3', 0);
-    }
-
-    if ( ($ACO_push_due_days_1 + $ACO_push_due_days_2 + $ACO_push_due_days_3) === 1 ){
-        $ACO_show_push_icons = TRUE;
-        $ACO_push_due_days_suffix = t('Day');
-    } elseif ( ($ACO_push_due_days_1 + $ACO_push_due_days_2 + $ACO_push_due_days_3) > 1 ) {
-        $ACO_show_push_icons = TRUE;
-        $ACO_push_due_days_suffix = t('Day(s)');
-    } else {
-        $ACO_show_push_icons = FALSE;
-        $ACO_push_due_days_suffix = '';
-    }
+// Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
+if ( array_sum($ACO_push_due_days) === 1 ){
+    $ACO_show_duedate_icons = TRUE;
+    $ACO_push_due_days_suffix = t('Day');
+    $ACO_push_due_days_suffix = ($ACO_remove_due_date) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
+} elseif ( array_sum($ACO_push_due_days) > 1 ) {
+    $ACO_show_duedate_icons = TRUE;
+    $ACO_push_due_days_suffix = t('Day(s)');
+    $ACO_push_due_days_suffix = ($ACO_remove_due_date) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
+} else {
+    $ACO_show_duedate_icons = ($ACO_remove_due_date) ? TRUE : FALSE;
+    $ACO_push_due_days_suffix = '';
+}
 
 ?>
 
@@ -98,13 +91,20 @@
                 ">
                 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
                     <?php if (time() > $task['date_due'] || date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
-                        <?php if ($ACO_show_push_icons): ?>
+                        <?php if ($ACO_show_duedate_icons): ?>
                             <strong>[</strong>
                             <?= $this->render('AdvancedCardOptions:icons_push_due_date', array(
                                 'task' => $task,
                                 'project' => $project,
                             )) ?>
-                            <?= $ACO_push_due_days_suffix; ?> <strong>]</strong>
+                            <?= $ACO_push_due_days_suffix; ?>
+                            <?php if ($ACO_remove_due_date): ?>
+                                <?= $this->render('AdvancedCardOptions:icon_remove_due_date', array(
+                                    'task' => $task,
+                                    'project' => $project,
+                                )) ?>
+                            <?php endif ?>
+                            <strong>]</strong>
                         <?php endif ?>
                     <?php endif ?>
                 <?php endif ?>
