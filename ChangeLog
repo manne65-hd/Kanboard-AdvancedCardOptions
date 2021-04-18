@@ -2,6 +2,8 @@ Version 0.1.0 (April 18, 2021)
 -------------------------------
 
 * Added a Helper to handle using the configuration-parameters and more
+* Added the option to remove the due-date
+* Renamed some of the meta-data-variables used to configure the plugin
 
 Version 0.0.3 (April 18, 2021)
 -------------------------------

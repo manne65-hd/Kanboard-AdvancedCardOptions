@@ -14,7 +14,7 @@ Allows advanced control over the appearance _(and options)_ of the task-cards in
 - [ ] Allow to view the due-date in collapsed view.
 - [x] Add up to 3 buttons to push the due-date of the task.
 - [ ] Add up to 3 links in the task-dropdown-menu to push the due-date
-- [ ] Add a button to remove the due-date of the task.
+- [x] Add a button to remove the due-date of the task.
 - [x] Default-preferences for all boards can be set in the ADMIN-control-panel
 - [x] ONLY project-managers/admins can override these default-preferences via a new "Advanced Card options"-panel on a per-project base
 - [x] includes german translation
