@@ -19,6 +19,8 @@ class ConfigController extends \Kanboard\Controller\ConfigController
     public function save()
     {
         $values =  $this->request->getValues();
+        $values += array('ACO_remove_due_date' => 0);
+
 
         if ($this->configModel->save($values)) {
             $this->flash->success(t('Settings saved successfully.'));

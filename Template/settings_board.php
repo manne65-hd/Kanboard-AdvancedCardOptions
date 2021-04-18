@@ -31,6 +31,8 @@
 
         <?= $this->form->label(t('3rd Button'), 'ACO_push_due_days_3') ?>
         <?= $this->form->number('ACO_push_due_days_3', $values, $errors, array('autofocus', 'tabindex="3"')) ?>
+
+        <?= $this->form->checkbox('ACO_remove_due_date', t('Show a button to remove the due-date'), 1, $values['ACO_remove_due_date'] == 1) ?>
     </fieldset>
 
     <?= $this->modal->submitButtons(array('tabindex' => 4)) ?>
