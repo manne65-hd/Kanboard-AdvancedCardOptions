@@ -17,6 +17,7 @@ class Plugin extends Base
         // Template HOOK-attachments ...
         $this->template->hook->attach('template:config:sidebar', 'AdvancedCardOptions:config/sidebar');
         $this->template->hook->attach('template:project:sidebar', 'AdvancedCardOptions:board/sidebar');
+        $this->template->hook->attach('template:task:dropdown', 'AdvancedCardOptions:task/dropdown');
 
         //Helpers
         $this->helper->register('AdvancedCardOptionsHelper', '\Kanboard\Plugin\AdvancedCardOptions\Helper\AdvancedCardOptionsHelper');
