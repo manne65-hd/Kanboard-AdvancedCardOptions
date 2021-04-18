@@ -4,7 +4,7 @@
 
 <div class="confirm">
     <p class="alert alert-info">
-        <?= t('Do you really want to push the due date of the task "%s" %s days out?', $task['title'], $_REQUEST['push_days']) ?>
+        <?= t('Do you really want to push out the due date of the task "%s" for %s day(s)?', $task['title'], $_REQUEST['push_days']) ?>
     </p>
 
     <?= $this->modal->confirmButtons(
