@@ -21,11 +21,13 @@ class BoardSettingsController extends BaseController
         $this->response->html($this->helper->layout->project('AdvancedCardOptions:settings_board', array(
             'owners' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
             'values' => array(
-                'ACO_project_config_method' => $this->projectMetadataModel->get($project['id'], 'ACO_project_config_method', 'ACO_project_config_defaults'),
-                'ACO_push_due_days_1'       => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_1'),
-                'ACO_push_due_days_2'       => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_2'),
-                'ACO_push_due_days_3'       => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_3'),
-                'ACO_remove_due_date'       => $this->projectMetadataModel->get($project['id'], 'ACO_remove_due_date', 0),
+                'ACO_project_config_method'     => $this->projectMetadataModel->get($project['id'], 'ACO_project_config_method', 'ACO_project_config_defaults'),
+                'ACO_push_due_days_1'           => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_1'),
+                'ACO_push_due_days_2'           => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_2'),
+                'ACO_push_due_days_3'           => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_3'),
+                'ACO_remove_due_date'           => $this->projectMetadataModel->get($project['id'], 'ACO_remove_due_date', 0),
+                'ACO_show_push_duebtn_dropdown' => $this->projectMetadataModel->get($project['id'], 'ACO_show_push_duebtn_dropdown', 1),
+                'ACO_show_push_duebtn_taskview' => $this->projectMetadataModel->get($project['id'], 'ACO_show_push_duebtn_taskview', 0),
                 'project_id' => $_REQUEST['project_id'],
             ),
             'errors' => $errors,
@@ -48,6 +50,8 @@ class BoardSettingsController extends BaseController
         $this->projectMetadataModel->save($project['id'], array('ACO_push_due_days_2' => $values["ACO_push_due_days_2"]));
         $this->projectMetadataModel->save($project['id'], array('ACO_push_due_days_3' => $values["ACO_push_due_days_3"]));
         $this->projectMetadataModel->save($project['id'], array('ACO_remove_due_date' => isset($values["ACO_remove_due_date"]) ? $values["ACO_remove_due_date"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_show_push_duebtn_dropdown' => isset($values["ACO_show_push_duebtn_dropdown"]) ? $values["ACO_show_push_duebtn_dropdown"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_show_push_duebtn_taskview' => isset($values["ACO_show_push_duebtn_taskview"]) ? $values["ACO_show_push_duebtn_taskview"] : 0 ));
 
 	    return $this->show($values, $errors);
     }
