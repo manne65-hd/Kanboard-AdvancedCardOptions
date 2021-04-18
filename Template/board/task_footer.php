@@ -1,29 +1,25 @@
 <?php
+// Get the configuration for the project / task
+$ACO_board_config_method = $this->helper->AdvancedCardOptionsHelper->getBoardConfigMethod($project['id']);
+if ( $ACO_board_config_method === 'ACO_board_config_defaults'){
+    // load DEFAULT-values as of > ADMIN / Seetings / AdvancedCardOptions
+    $ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getAppPushDueDays();
+} else {
+    // load the custom settings for the current project
+    $ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getProjectPushDueDays($project['id']);
+}
 
-    // Get the configuration for the current project
-    $ACO_board_config_method = $this->task->projectMetadataModel->get($project['id'], 'ACO_board_config_method', 'ACO_board_config_defaults');
-    if ( $ACO_board_config_method === 'ACO_board_config_defaults'){
-        // load DEFAULT-values as of > ADMIN / Seetings / AdvancedCardOptions
-        $ACO_push_due_days_1 = $this->app->configModel->get('ACO_push_due_days_1', 0);
-        $ACO_push_due_days_2 = $this->app->configModel->get('ACO_push_due_days_2', 0);
-        $ACO_push_due_days_3 = $this->app->configModel->get('ACO_push_due_days_3', 0);
-    } else {
-        // load the custom settings for the current project
-        $ACO_push_due_days_1 = $this->task->projectMetadataModel->get($project['id'], 'ACO_push_due_days_1', 0);
-        $ACO_push_due_days_2 = $this->task->projectMetadataModel->get($project['id'], 'ACO_push_due_days_2', 0);
-        $ACO_push_due_days_3 = $this->task->projectMetadataModel->get($project['id'], 'ACO_push_due_days_3', 0);
-    }
-
-    if ( ($ACO_push_due_days_1 + $ACO_push_due_days_2 + $ACO_push_due_days_3) === 1 ){
-        $ACO_show_push_icons = TRUE;
-        $ACO_push_due_days_suffix = t('Day');
-    } elseif ( ($ACO_push_due_days_1 + $ACO_push_due_days_2 + $ACO_push_due_days_3) > 1 ) {
-        $ACO_show_push_icons = TRUE;
-        $ACO_push_due_days_suffix = t('Day(s)');
-    } else {
-        $ACO_show_push_icons = FALSE;
-        $ACO_push_due_days_suffix = '';
-    }
+// Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
+if ( array_sum($ACO_push_due_days) === 1 ){
+    $ACO_show_push_icons = TRUE;
+    $ACO_push_due_days_suffix = t('Day');
+} elseif ( array_sum($ACO_push_due_days) > 1 ) {
+    $ACO_show_push_icons = TRUE;
+    $ACO_push_due_days_suffix = t('Day(s)');
+} else {
+    $ACO_show_push_icons = FALSE;
+    $ACO_push_due_days_suffix = '';
+}
 
 ?>
 
