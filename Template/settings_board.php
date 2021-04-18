@@ -35,10 +35,14 @@
         <fieldset>
             <legend><?= t('Additional places to display the "Push due-date-buttons"') ?></legend>
             <?= $this->form->checkbox('ACO_show_push_duebtn_dropdown', t('Show buttons in the card-dropdown-menu'), 1, $values['ACO_show_push_duebtn_dropdown'] == 1) ?>
-            <?= $this->form->checkbox('ACO_show_push_duebtn_taskview', t('Show buttons in the task-view actions-list'), 1, $values['ACO_show_push_duebtn_taskview'] == 1) ?>
+            <?= $this->form->checkbox('ACO_show_push_duebtn_taskview', t('Show buttons in task-view'), 1, $values['ACO_show_push_duebtn_taskview'] == 1) ?>
         </fieldset>
 
-        <?= $this->form->checkbox('ACO_remove_due_date', t('Show a button to remove the due-date'), 1, $values['ACO_remove_due_date'] == 1) ?>
+        <fieldset>
+            <legend><?= t('Additional buttons') ?></legend>
+            <?= $this->form->checkbox('ACO_remove_due_date', t('Show a button to remove the due-date'), 1, $values['ACO_remove_due_date'] == 1) ?>
+            <?= $this->form->checkbox('ACO_create_due_date', t('Show button(s) to create a due-date(Will use the same intervals as configured above)'), 1, $values['ACO_create_due_date'] == 1) ?>
+        </fieldset>
     </fieldset>
 
     <?= $this->modal->submitButtons(array('tabindex' => 4)) ?>
