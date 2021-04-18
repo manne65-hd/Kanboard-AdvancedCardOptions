@@ -93,7 +93,7 @@ class AdvancedCardOptionsHelper extends TaskHelper
         if ($this->project_config_method === 'ACO_project_config_defaults'){
             return $this->configModel->get($ACO_parameter, $ACO_defaults[$ACO_parameter]);
         } else {
-            return $this->projectMetadataModel->get($this->project_id, $ACO_parameter, $ACO_defaults[$ACO_parameter]);
+            return $this->projectMetadataModel->get($this->project_id, $ACO_parameter, $this->ACO_defaults[$ACO_parameter]);
         }
     }
 
