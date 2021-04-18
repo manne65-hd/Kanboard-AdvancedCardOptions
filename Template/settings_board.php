@@ -11,7 +11,7 @@
         <legend><?= t('Configuration-method') ?></legend>
         <?= $this->form->radios('ACO_project_config_method', array(
                 'ACO_project_config_defaults' => t('Use the applications-defaults (configured in > ADMIN / Settings / Advanced card-options)'),
-                'ACO_board_config_custom' => t('Use custom values for this project'),
+                'ACO_project_config_custom' => t('Use custom values for this project'),
             ),
             $values
         ) ?>
