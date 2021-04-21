@@ -3,7 +3,7 @@
     <h2><?= t('Advanced card-options for the project') . ' "' .   $project['name'] . '"' ?></h2>
 </div>
 
-<form method="post" action="<?= $this->url->href('BoardSettingsController', 'save', array('plugin' => 'AdvancedCardOptions', 'project_id' => $project['id'], 'redirect' => 'show')) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('ProjectSettingsController', 'save', array('plugin' => 'AdvancedCardOptions', 'project_id' => $project['id'], 'redirect' => 'show')) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('id', $values) ?>
 

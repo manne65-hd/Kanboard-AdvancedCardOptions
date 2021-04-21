@@ -93,13 +93,13 @@ if ( array_sum($ACO_push_due_days) === 1 ){
                     <?php if (time() > $task['date_due'] || date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
                         <?php if ($ACO_show_duedate_icons): ?>
                             <strong>[</strong>
-                            <?= $this->render('AdvancedCardOptions:icons_push_due_date', array(
+                            <?= $this->render('AdvancedCardOptions:self/card/icons_push_due_date', array(
                                 'task' => $task,
                                 'project' => $project,
                             )) ?>
                             <?= $ACO_push_due_days_suffix; ?>
                             <?php if ($ACO_remove_due_date): ?>
-                                <?= $this->render('AdvancedCardOptions:icon_remove_due_date', array(
+                                <?= $this->render('AdvancedCardOptions:self/card/icon_remove_due_date', array(
                                     'task' => $task,
                                     'project' => $project,
                                 )) ?>

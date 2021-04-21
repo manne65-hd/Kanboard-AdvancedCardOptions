@@ -2,10 +2,10 @@
 namespace Kanboard\Plugin\AdvancedCardOptions\Controller;
 use Kanboard\Controller\BaseController;
 
-class BoardSettingsController extends BaseController
+class ProjectSettingsController extends BaseController
 {
     /**
-     * Render AdvancedCardOptions for configuration
+     * Render AdvancedCardOptions for project-configuration
      *
      * @access public
      * @param array $values
@@ -18,7 +18,7 @@ class BoardSettingsController extends BaseController
 	    $colorList =  $this->colorModel->getList($project['id']);
 	    $tagList =  $this->tagModel->getAll($project['id']);
 
-        $this->response->html($this->helper->layout->project('AdvancedCardOptions:settings_board', array(
+        $this->response->html($this->helper->layout->project('AdvancedCardOptions:project/advanced_card_options', array(
             'owners' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
             'values' => array(
                 'ACO_project_config_method'     => $this->projectMetadataModel->get($project['id'], 'ACO_project_config_method', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_project_config_method']),

@@ -9,7 +9,7 @@ class AdvancedCardOptionsController extends BaseController
 {
     public function pushDueDate()
     {
-	$template = 'AdvancedCardOptions:confirm_push_due_date';
+	$template = 'AdvancedCardOptions:self/confirm/confirm_push_due_date';
 	$success_message = t('Task due-date has been pushed successfully.');
 	$failure_message = t('Error while trying to push the due-date of this task.');
 
@@ -43,7 +43,7 @@ class AdvancedCardOptionsController extends BaseController
 
     public function removeDueDate()
     {
-	$template = 'AdvancedCardOptions:confirm_remove_due_date';
+	$template = 'AdvancedCardOptions:self/confirm/confirm_remove_due_date';
 	$success_message = t('Task due-date has been removed successfully.');
 	$failure_message = t('Error while trying to remove the due-date of this task.');
 
