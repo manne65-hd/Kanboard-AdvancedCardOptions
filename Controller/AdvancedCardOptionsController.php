@@ -16,6 +16,10 @@ class AdvancedCardOptionsController extends BaseController
 	$project = $this->getProject();
 	$task = $this->getTask();
 
+    // Calculate the date + time of the requested pushed due-date
+    $pushed_date_due = $this->helper->AdvancedCardOptionsHelper->getPushedDateDue($task['date_due'], $_REQUEST['push_days']);
+    $task['confirm_pushed_date_due'] = $pushed_date_due['formatted'];
+
 	if ($this->request->getStringParam('confirmation') === 'yes') {
             $this->checkCSRFParam();
 		$values = array();
@@ -25,7 +29,7 @@ class AdvancedCardOptionsController extends BaseController
 		$values['title'] = $valuesx['title'];
 
 	if (true){
-		$values['date_due'] = date('Y-m-d', strtotime("+" . $this->request->getStringParam('push_days') . " days"));
+        $values['date_due'] = $pushed_date_due['raw'];
 
 		$this->taskModificationModel->update($values);
                 $this->flash->success($success_message);

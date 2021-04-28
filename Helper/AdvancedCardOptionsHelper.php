@@ -100,4 +100,27 @@ class AdvancedCardOptionsHelper extends TaskHelper
         }
     }
 
+    /**
+     * Return new (pushed) due-date
+     *
+     * @access public
+     * @param int $cur_due_date timestamp for current due_date
+     * @param int $push_days Number of days to push
+     * @return array
+     */
+    public function getPushedDateDue($cur_due_date = 0, $push_days)
+    {
+        $pushed_date_due = array();
+        $cur_time_due = date('H:i', $cur_due_date);
+        $new_day_due = date('Y-m-d', strtotime("+" . $push_days . " days"));
+        $pushed_date_due['raw'] = $new_day_due . ' ' . $cur_time_due;
+        $new_timestamp  = strtotime($pushed_date_due['raw']);
+        if ( date('Hi', $new_timestamp) === '0000' ) {
+            $pushed_date_due['formatted'] = $this->helper->dt->date($new_timestamp);
+        } else {
+            $pushed_date_due['formatted'] = $this->helper->dt->datetime($new_timestamp);
+        }
+
+        return $pushed_date_due;
+    }
 }
