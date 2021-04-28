@@ -1,6 +1,7 @@
 Version 0.2.0 (April 21, 2021)
 -------------------------------
 * Preserve the time(of the old due-date) when calculating the new due-date
+* Move Popover-Icon for the description to the left (to avoid overflow-issues with title-div)
 * INTERNAL changes
  * Reorganized folder-structure for templates
  * Renamed BoardSettingsController > ProjectSettingsController
