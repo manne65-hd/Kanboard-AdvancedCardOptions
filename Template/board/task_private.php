@@ -26,11 +26,12 @@
                 <strong><?= '#'.$task['id'] ?></strong>
             <?php endif ?>
 
-            <div class="task-board-avatars">
+            <!-- fa-file-o = No DESC/COMMENT // fa-file-text-o = DESC only / fa-comment-o = COMMENT only / fa-file-txt = DESC + COMMENT / -->
             <?php if (! empty($task['description'])): ?>
                 <?= $this->app->tooltipLink('<i class="fa fa-file-text-o"></i>', $this->url->href('BoardTooltipController', 'description', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
+            <?php elseif (empty($task['description'])): ?>
+                <span class="aco_dimmed"><i class="fa fa-file-o"></i></span>
             <?php endif ?>
-            </div>
 
             <?php if (! empty($task['assignee_username'])): ?>
                 <span title="<?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>">

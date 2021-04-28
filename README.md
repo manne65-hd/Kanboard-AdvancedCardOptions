@@ -7,7 +7,7 @@ Allows advanced control over the appearance _(and options)_ of the task-cards in
 
 #### List of planned features
 - [x] Allow to view the task-description as a mouseover-popup in collapsed view.
-  - Currently hardcoded and still has issues if Task title is long!!
+  - Still hardcoded but moved to the left to avoid overflow-issues with the title-DIV
 - [ ] Allow to view the latest comment in expanded view _(and limit the number of words to display on the card)_
 - [ ] Allow to view the latest comment as a mouseover-popup in collapsed and/or expanded view.
 - [ ] Allow to display tags and/or category in collapsed view.

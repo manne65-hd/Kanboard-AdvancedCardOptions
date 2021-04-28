@@ -23,6 +23,8 @@ class Plugin extends Base
         //Helpers
         $this->helper->register('AdvancedCardOptionsHelper', '\Kanboard\Plugin\AdvancedCardOptions\Helper\AdvancedCardOptionsHelper');
 
+        //CSS
+        $this->hook->on('template:layout:css', array('template' => 'plugins/AdvancedCardOptions/Assets/css/adv_card_options.css'));
     }
 
     public function onStartup() {
@@ -47,7 +49,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '0.1.0';
+        return '0.2.0';
     }
 
     public function getPluginHomepage()
