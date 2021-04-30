@@ -64,6 +64,22 @@ $ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getP
                 <?php endif ?>
             <?php endif ?>
 
+            <?php if ($ACO_collapsed_due_date && ! empty($task['date_due'])): ?>
+                <?php $aco_overdue = t('Due Date was') . ': ' . $this->dt->datetime($task['date_due']) ?>
+                <?php $aco_duetoday = t('Due today at') . ': ' . $this->dt->time($task['date_due']) ?>
+
+                <div class="aco_icon_right">
+                <?php if (time() > $task['date_due']): ?>
+                    <span class="task-date task-date-overdue" title="<?= $aco_overdue ?>" role="img" aria-label="<?= $aco_overdue ?>">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                <?php elseif (date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
+                    <span class="task-date task-date-today" title="<?= $aco_duetoday ?>" role="img" aria-label="<?= $aco_duetoday ?>">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                <?php endif ?>
+                </div>
+            <?php endif ?>
 
             <?php if (! empty($task['assignee_username'])): ?>
                 <span title="<?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>">
@@ -71,14 +87,6 @@ $ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getP
                 </span> -
             <?php endif ?>
             <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', $this->text->e($task['title'])) ?>
-
-            <?php if ($ACO_collapsed_due_date && ! empty($task['date_due'])): ?>
-                <?php if (time() > $task['date_due']): ?>
-                    <span class="task-date task-date-overdue"><i class="fa fa-calendar"></i></span>
-                <?php elseif (date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
-                    <span class="task-date task-date-today"><i class="fa fa-calendar"></i></span>
-                <?php endif ?>
-            <?php endif ?>
         </div>
     <?php else: ?>
         <div class="task-board-expanded">

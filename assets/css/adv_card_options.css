@@ -1,3 +1,10 @@
+.aco_icon_right {
+    z-index: 20;
+    position: relative;;
+    text-align: right;
+    float: right
+}
+
 .aco_dimmed {
   opacity: 0.3;
 }
