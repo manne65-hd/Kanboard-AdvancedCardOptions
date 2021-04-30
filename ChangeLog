@@ -1,4 +1,12 @@
-Version 0.2.0 (April 21, 2021)
+Version 0.2.1 (April 30, 2021)
+-------------------------------
+* Option to display task-description as popover in collapsed view is now configurable
+ * Currently only from the custom project-settings!
+* Option to display latest comment as popover in collapsed view is now configurable
+  * Currently only from the custom project-settings!
+  * In fact for now it's not showing the latest comment, but it is rather a copy of the same link as in expanded view
+
+Version 0.2.0 (April 28, 2021)
 -------------------------------
 * Preserve the time(of the old due-date) when calculating the new due-date
 * Move Popover-Icon for the description to the left (to avoid overflow-issues with title-div)

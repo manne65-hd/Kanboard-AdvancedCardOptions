@@ -29,6 +29,8 @@ class ProjectSettingsController extends BaseController
                 'ACO_show_push_duebtn_taskview' => $this->projectMetadataModel->get($project['id'], 'ACO_show_push_duebtn_taskview', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_show_push_duebtn_taskview']),
                 'ACO_remove_due_date'           => $this->projectMetadataModel->get($project['id'], 'ACO_remove_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_remove_due_date']),
                 'ACO_create_due_date'           => $this->projectMetadataModel->get($project['id'], 'ACO_create_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_create_due_date']),
+                'ACO_collapsed_description'     => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_description', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_description']),
+                'ACO_collapsed_latest_comment'  => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_latest_comment', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_latest_comment']),
                 'project_id' => $_REQUEST['project_id'],
             ),
             'errors' => $errors,
@@ -54,6 +56,8 @@ class ProjectSettingsController extends BaseController
         $this->projectMetadataModel->save($project['id'], array('ACO_show_push_duebtn_taskview' => isset($values["ACO_show_push_duebtn_taskview"]) ? $values["ACO_show_push_duebtn_taskview"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_remove_due_date' => isset($values["ACO_remove_due_date"]) ? $values["ACO_remove_due_date"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_create_due_date' => isset($values["ACO_create_due_date"]) ? $values["ACO_create_due_date"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_collapsed_description' => isset($values["ACO_collapsed_description"]) ? $values["ACO_collapsed_description"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_collapsed_latest_comment' => isset($values["ACO_collapsed_latest_comment"]) ? $values["ACO_collapsed_latest_comment"] : 0 ));
 
 	    return $this->show($values, $errors);
     }

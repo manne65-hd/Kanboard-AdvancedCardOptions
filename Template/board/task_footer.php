@@ -1,8 +1,8 @@
 <?php
 // Get the configuration for the project / task
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
-$ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
-$ACO_remove_due_date = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_push_due_days          = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+$ACO_remove_due_date        = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
 if ( array_sum($ACO_push_due_days) === 1 ){
