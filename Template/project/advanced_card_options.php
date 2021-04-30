@@ -19,6 +19,13 @@
     </fieldset>
 
     <fieldset>
+        <legend><?= t('Additional information') ?></legend>
+            <legend><?= t('Display additional information in card-view"') ?></legend>
+            <?= $this->form->checkbox('ACO_collapsed_description', t('Show description(popover) in collapsed card-view'), 1, $values['ACO_collapsed_description'] == 1) ?>
+            <?= $this->form->checkbox('ACO_collapsed_latest_comment', t('Show latest comment(popover) in collapsed card-view'), 1, $values['ACO_collapsed_latest_comment'] == 1) ?>
+    </fieldset>
+
+    <fieldset>
         <legend><?= t('Buttons to change the due-date') ?></legend>
         <?= t('Number of days to push the due-date:'); ?>
         <p class="form-help"><?= t('Leave blank or set to 0 to disable button') ?></p>

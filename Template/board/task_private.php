@@ -1,3 +1,12 @@
+<?php
+// Get the configuration for the project / task
+$ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
+$ACO_push_due_days              = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+$ACO_remove_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_collapsed_description      = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_description');
+$ACO_collapsed_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_latest_comment');
+
+?>
 <div class="
         task-board
         <?= $task['is_draggable'] ? 'draggable-item ' : '' ?>
@@ -26,11 +35,33 @@
                 <strong><?= '#'.$task['id'] ?></strong>
             <?php endif ?>
 
-            <!-- fa-file-o = No DESC/COMMENT // fa-file-text-o = DESC only / fa-comment-o = COMMENT only / fa-file-txt = DESC + COMMENT / -->
-            <?php if (! empty($task['description'])): ?>
-                <?= $this->app->tooltipLink('<i class="fa fa-file-text-o"></i>', $this->url->href('BoardTooltipController', 'description', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
-            <?php elseif (empty($task['description'])): ?>
-                <span class="aco_dimmed"><i class="fa fa-file-o"></i></span>
+            <?php if ($ACO_collapsed_description): ?>
+                <!-- fa-file-o = No DESC/COMMENT // fa-file-text-o = DESC only / fa-comment-o = COMMENT only / fa-file-txt = DESC + COMMENT / -->
+                <?php if (! empty($task['description'])): ?>
+                    <?= $this->app->tooltipLink('<i class="fa fa-file-text-o"></i>', $this->url->href('BoardTooltipController', 'description', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
+                <?php elseif (empty($task['description'])): ?>
+                    <span class="aco_dimmed"><i class="fa fa-file-o"></i></span>
+                <?php endif ?>
+            <?php endif ?>
+
+            <?php if ($ACO_collapsed_latest_comment): ?>
+                <?php if ($task['nb_comments'] > 0): ?>
+                    <?php if ($not_editable): ?>
+                        <?php $aria_label = $task['nb_comments'] == 1 ? t('%d comment', $task['nb_comments']) : t('%d comments', $task['nb_comments']); ?>
+                        <span title="<?= $aria_label ?>" role="img" aria-label="<?= $aria_label ?>"><i class="fa fa-comments-o"></i>&nbsp;<?= $task['nb_comments'] ?></span>
+                    <?php else: ?>
+                        <?= $this->modal->medium(
+                            'comments-o',
+                            $task['nb_comments'],
+                            'CommentListController',
+                            'show',
+                            array('task_id' => $task['id'], 'project_id' => $task['project_id']),
+                            $task['nb_comments'] == 1 ? t('%d comment', $task['nb_comments']) : t('%d comments', $task['nb_comments'])
+                        ) ?>
+                    <?php endif ?>
+                <?php else: ?>
+                    <span class="aco_dimmed"><i class="fa fa-comments-o"></i></span>
+                <?php endif ?>
             <?php endif ?>
 
             <?php if (! empty($task['assignee_username'])): ?>
