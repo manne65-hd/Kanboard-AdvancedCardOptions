@@ -19,10 +19,13 @@
     </fieldset>
 
     <fieldset>
-        <legend><?= t('Additional information') ?></legend>
-            <legend><?= t('Display additional information in card-view"') ?></legend>
-            <?= $this->form->checkbox('ACO_collapsed_description', t('Show description(popover) in collapsed card-view'), 1, $values['ACO_collapsed_description'] == 1) ?>
-            <?= $this->form->checkbox('ACO_collapsed_latest_comment', t('Show latest comment(popover) in collapsed card-view'), 1, $values['ACO_collapsed_latest_comment'] == 1) ?>
+        <legend><?= t('Configure card-view ...') ?></legend>
+            <fieldset>
+                <legend><?= t('Collapsed card-view') ?></legend>
+                    <?= $this->form->checkbox('ACO_collapsed_description', t('Show description as mouseover-tooltip'), 1, $values['ACO_collapsed_description'] == 1) ?>
+                    <?= $this->form->checkbox('ACO_collapsed_latest_comment', t('Show latest comment as mouseover-tooltip'), 1, $values['ACO_collapsed_latest_comment'] == 1) ?>
+                    <?= $this->form->checkbox('ACO_collapsed_due_date', t('Indicate due today or overdue as mouseover-tooltip'), 1, $values['ACO_collapsed_due_date'] == 1) ?>
+            </fieldset>
     </fieldset>
 
     <fieldset>

@@ -5,6 +5,7 @@ $ACO_push_due_days              = $this->helper->AdvancedCardOptionsHelper->getP
 $ACO_remove_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
 $ACO_collapsed_description      = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_description');
 $ACO_collapsed_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_latest_comment');
+$ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_due_date');
 
 ?>
 <div class="
@@ -36,7 +37,6 @@ $ACO_collapsed_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getP
             <?php endif ?>
 
             <?php if ($ACO_collapsed_description): ?>
-                <!-- fa-file-o = No DESC/COMMENT // fa-file-text-o = DESC only / fa-comment-o = COMMENT only / fa-file-txt = DESC + COMMENT / -->
                 <?php if (! empty($task['description'])): ?>
                     <?= $this->app->tooltipLink('<i class="fa fa-file-text-o"></i>', $this->url->href('BoardTooltipController', 'description', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
                 <?php elseif (empty($task['description'])): ?>
@@ -64,12 +64,21 @@ $ACO_collapsed_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getP
                 <?php endif ?>
             <?php endif ?>
 
+
             <?php if (! empty($task['assignee_username'])): ?>
                 <span title="<?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>">
                     <?= $this->text->e($this->user->getInitials($task['assignee_name'] ?: $task['assignee_username'])) ?>
                 </span> -
             <?php endif ?>
             <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', $this->text->e($task['title'])) ?>
+
+            <?php if ($ACO_collapsed_due_date && ! empty($task['date_due'])): ?>
+                <?php if (time() > $task['date_due']): ?>
+                    <span class="task-date task-date-overdue"><i class="fa fa-calendar"></i></span>
+                <?php elseif (date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
+                    <span class="task-date task-date-today"><i class="fa fa-calendar"></i></span>
+                <?php endif ?>
+            <?php endif ?>
         </div>
     <?php else: ?>
         <div class="task-board-expanded">

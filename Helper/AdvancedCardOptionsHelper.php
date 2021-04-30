@@ -31,6 +31,7 @@ class AdvancedCardOptionsHelper extends TaskHelper
         'ACO_create_due_date' => 0,
         'ACO_collapsed_description' => 0,
         'ACO_collapsed_latest_comment' => 0,
+        'ACO_collapsed_due_date' => 0,
     );
 
 
