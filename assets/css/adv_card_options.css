@@ -37,12 +37,10 @@
     font-size: 0.9em;
     line-height: 1.2em;
 
-    /* will have to work on this later ...
     display: block;
     text-overflow: ellipsis !important;
     word-wrap:normal;
     overflow: hidden;
-    max-height: 3em;
-    line-height: 1em;
-    */
+    /* maybe later I can make this configurable ? */
+    max-height: 3.6em;
 }

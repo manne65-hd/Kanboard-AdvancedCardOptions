@@ -47,24 +47,16 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
                 <?php endif ?>
             <?php endif ?>
 
-            <?php if ($ACO_collapsed_latest_comment): ?>
-                <?php if ($task['nb_comments'] > 0): ?>
-                    <?php if ($not_editable): ?>
-                        <?php $aria_label = $task['nb_comments'] == 1 ? t('%d comment', $task['nb_comments']) : t('%d comments', $task['nb_comments']); ?>
-                        <span title="<?= $aria_label ?>" role="img" aria-label="<?= $aria_label ?>"><i class="fa fa-comments-o"></i>&nbsp;<?= $task['nb_comments'] ?></span>
-                    <?php else: ?>
-                        <?= $this->modal->medium(
-                            'comments-o',
-                            $task['nb_comments'],
-                            'CommentListController',
-                            'show',
-                            array('task_id' => $task['id'], 'project_id' => $task['project_id']),
-                            $task['nb_comments'] == 1 ? t('%d comment', $task['nb_comments']) : t('%d comments', $task['nb_comments'])
-                        ) ?>
-                    <?php endif ?>
-                <?php else: ?>
-                    <span class="aco_dimmed"><i class="fa fa-comments-o"></i></span>
-                <?php endif ?>
+            <?php if ($ACO_collapsed_latest_comment  && $task['nb_comments'] > 0): ?>
+                <?php
+                    $ACO_latest_comment = $this->task->commentModel->getLatest($task['id']);
+                    $ACO_latest_comment_tooltip = '####' . t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])) . PHP_EOL;
+                    $ACO_latest_comment_tooltip .= '--------------------' . PHP_EOL;
+                    $ACO_latest_comment_tooltip .= $ACO_latest_comment['comment'];
+                ?>
+                    <i class="fa fa-commenting" title="<?= $ACO_latest_comment_tooltip ?>" aria-label="<?= $ACO_latest_comment_tooltip ?>"></i>
+            <?php else: ?>
+                    <span class="aco_dimmed"><i class="fa fa-comment"></i></span>
             <?php endif ?>
 
             <?php if ($ACO_collapsed_due_date && ! empty($task['date_due'])): ?>
