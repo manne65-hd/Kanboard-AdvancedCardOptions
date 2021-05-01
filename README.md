@@ -41,7 +41,7 @@ Implement the planned features ...
 
 Credits
 -------
-This plugin is based on the work of [David Morlitz](https://github.com/dmorlitz), the author of the [kanboard-CardPushDate](https://github.com/dmorlitz/kanboard-CardPushDate)
+Parts of this plugin are based on and inspired by the work of [David Morlitz](https://github.com/dmorlitz), the author of the [kanboard-CardPushDate](https://github.com/dmorlitz/kanboard-CardPushDate)
 
 Because I wanted some more/other options and due to the fact, that we would both override the same templates ... I _(had)_ to make my own plugin ;-)
 
