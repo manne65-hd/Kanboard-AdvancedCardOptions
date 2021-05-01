@@ -29,6 +29,7 @@ class AdvancedCardOptionsHelper extends TaskHelper
         'ACO_show_push_duebtn_taskview' =>0,
         'ACO_remove_due_date' => 0,
         'ACO_create_due_date' => 0,
+        'ACO_collapsed_hide_edit' => 0,
         'ACO_collapsed_description' => 0,
         'ACO_collapsed_latest_comment' => 0,
         'ACO_collapsed_due_date' => 0,

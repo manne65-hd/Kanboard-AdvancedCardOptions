@@ -22,6 +22,7 @@
         <legend><?= t('Configure card-view ...') ?></legend>
             <fieldset>
                 <legend><?= t('Collapsed card-view') ?></legend>
+                    <?= $this->form->checkbox('ACO_collapsed_hide_edit', t('Hide EDIT-button'), 1, $values['ACO_collapsed_hide_edit'] == 1) ?>
                     <?= $this->form->checkbox('ACO_collapsed_description', t('Show description as mouseover-tooltip'), 1, $values['ACO_collapsed_description'] == 1) ?>
                     <?= $this->form->checkbox('ACO_collapsed_latest_comment', t('Show latest comment as mouseover-tooltip'), 1, $values['ACO_collapsed_latest_comment'] == 1) ?>
                     <?= $this->form->checkbox('ACO_collapsed_due_date', t('Indicate due today or overdue as mouseover-tooltip'), 1, $values['ACO_collapsed_due_date'] == 1) ?>

@@ -1,6 +1,7 @@
 Version 0.2.2 (May 1, 2021)
 -------------------------------
 * Option to Indicate due today or overdue as mouseover-tooltip in collapsed card-view
+* Option to hide the EDIT-button in collapsed card-view
 
 Version 0.2.1 (April 30, 2021)
 -------------------------------

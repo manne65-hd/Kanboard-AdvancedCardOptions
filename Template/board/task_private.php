@@ -3,6 +3,7 @@
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
 $ACO_push_due_days              = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
 $ACO_remove_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_collapsed_hide_edit        = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_hide_edit');
 $ACO_collapsed_description      = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_description');
 $ACO_collapsed_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_latest_comment');
 $ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_due_date');
@@ -29,7 +30,7 @@ $ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getP
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse"></i></div>
             <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
                 <?= $this->render('task/dropdown', array('task' => $task, 'redirect' => 'board')) ?>
-                <?php if ($this->projectRole->canUpdateTask($task)): ?>
+                <?php if ($this->projectRole->canUpdateTask($task) && ! $ACO_collapsed_hide_edit): ?>
                     <?= $this->modal->large('edit', '', 'TaskModificationController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
                 <?php endif ?>
             <?php else: ?>
