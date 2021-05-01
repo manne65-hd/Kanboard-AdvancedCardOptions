@@ -1,6 +1,6 @@
 .aco_icon_right {
-    z-index: 20;
-    position: relative;;
+    z-index: auto;
+    position: relative;
     text-align: right;
     float: right
 }
