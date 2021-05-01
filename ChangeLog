@@ -1,6 +1,8 @@
 Version 0.3.0 (May 1, 2021)
 -------------------------------
-* Preparing last missing option "Allow to view latest comment in expanded card-view"
+* Added option to view latest comment in expanded card-view
+* Finally showing the last comment(instead of showing a copy of the comments-link from the footer) in collapsed card-view
+  * Needs further improvement, to render as a "Kanboard-tooltip" with rendered Markdown
 
 Version 0.2.2 (May 1, 2021)
 -------------------------------
