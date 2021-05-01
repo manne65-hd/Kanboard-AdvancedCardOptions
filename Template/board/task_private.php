@@ -93,6 +93,16 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
                 <?php foreach ($task['tags'] as $tag): ?>
                     <li class="task-tag <?= $tag['color_id'] ? "color-{$tag['color_id']}" : '' ?>"><?= $this->text->e($tag['name']) ?></li>
                 <?php endforeach ?>
+        <?php endif ?>
+
+        <?php if ($ACO_collapsed_category && ! empty($task['category_id'])): ?>
+            <li style="float: right !important;" class="task-tag <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>"><?= $this->text->e($task['category_name']) ?>
+                <?php if (! empty($task['category_description'])): ?>
+                    <?= $this->app->tooltipMarkdown($task['category_description']) ?>
+                <?php endif ?>
+            </li>
+        <?php endif ?>
+        <?php if ($ACO_collapsed_tags && ! empty($task['tags']) || ($ACO_collapsed_category && ! empty($task['category_id']))): ?>
                 </ul>
             </div>
         <?php endif ?>
