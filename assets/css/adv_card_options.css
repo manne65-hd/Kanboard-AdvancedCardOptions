@@ -11,8 +11,8 @@
 
 .aco_collapsed_tags_category{
     // will have to work on this later > force category to appear on same "line" as tags
-    margin-top : 1px !important;
-    border-top: 1px dotted; /* this is rather for debugging during development! */
+    margin-top: 1px !important;
+    //border-top: 1px dotted; /* this is rather for debugging during development! */
     padding: 2px;
 }
 
@@ -20,4 +20,24 @@
     // will have to work on this later > force category to appear on same "line" as tags
     margin-top: 2px !important;
     margin-bottom: 2px !important;
+}
+
+.aco_expanded_latest_comment{
+    margin: 0px 2px;
+    border: 1px dotted;
+    border-color: #555;
+    border-radius: 4px;
+    padding: 0.2em;
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1em;
+
+    /* will have to work on this later ...
+    display: block;
+    text-overflow: ellipsis !important;
+    word-wrap:normal;
+    overflow: hidden;
+    max-height: 3em;
+    line-height: 1em;
+    */
 }
