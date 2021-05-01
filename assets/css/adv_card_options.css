@@ -28,6 +28,12 @@
     float:left;
 }
 .aco_expanded_latest_comment{
+    display: block;
+    text-overflow: ellipsis !important;
+    word-wrap:normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+
     margin: 0px 2px;
     border: 1px dotted;
     border-color: #555;
@@ -36,11 +42,5 @@
     color: #555;
     font-size: 0.9em;
     line-height: 1.2em;
-
-    display: block;
-    text-overflow: ellipsis !important;
-    word-wrap:normal;
-    overflow: hidden;
-    /* maybe later I can make this configurable ? */
     max-height: 3.6em;
 }
