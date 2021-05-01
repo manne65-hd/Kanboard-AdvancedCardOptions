@@ -42,5 +42,22 @@
     color: #555;
     font-size: 0.9em;
     line-height: 1.2em;
-    max-height: 3.6em;
+    max-height: 4.8em;
+}
+
+.aco_expanded_latest_comment::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.aco_expanded_latest_comment::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.aco_expanded_latest_comment::-webkit-scrollbar-thumb
+{
+	background-color: #555;
 }
