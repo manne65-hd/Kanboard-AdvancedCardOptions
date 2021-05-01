@@ -24,12 +24,10 @@ if ( array_sum($ACO_push_due_days) === 1 ){
 
 
 <?php if ($ACO_expanded_latest_comment  && $task['nb_comments'] > 0): ?>
+    <?php $ACO_latest_comment = $this->task->commentModel->getLatest($task['id']); ?>
     <div class="aco_expanded_latest_comment">
-        <i class="fa fa-comment"></i>
-        Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
-        Por scientie, musica, sport etc, litot Europa usa li sam vocabular.
-        Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca
-        </div>
+        <i class="fa fa-comment"></i><?= $ACO_latest_comment['comment'] ?>
+    </div>
 <?php endif ?>
 
 <?php if (! empty($task['category_id'])): ?>
