@@ -1,3 +1,46 @@
+.aco_icon_right {
+    z-index: auto;
+    position: relative;
+    text-align: right;
+    float: right
+}
+
 .aco_dimmed {
   opacity: 0.3;
+}
+
+.aco_collapsed_tags_category{
+    // will have to work on this later > force category to appear on same "line" as tags
+    margin-top: 1px !important;
+    //border-top: 1px dotted; /* this is rather for debugging during development! */
+    padding: 2px;
+}
+
+.aco-board-category-container {
+    // will have to work on this later > force category to appear on same "line" as tags
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+.aco_comment_icon{
+    padding-right: 5px;
+    margin-bottom: 0px;
+    float:left;
+}
+.aco_expanded_latest_comment{
+    margin: 0px 2px;
+    border: 1px dotted;
+    border-color: #555;
+    border-radius: 4px;
+    padding: 0.2em;
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1.2em;
+
+    display: block;
+    text-overflow: ellipsis !important;
+    word-wrap:normal;
+    overflow: hidden;
+    /* maybe later I can make this configurable ? */
+    max-height: 3.6em;
 }

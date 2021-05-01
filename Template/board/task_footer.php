@@ -1,8 +1,10 @@
 <?php
 // Get the configuration for the project / task
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
-$ACO_push_due_days          = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
-$ACO_remove_due_date        = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_push_due_days           = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+$ACO_remove_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_create_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_expanded_latest_comment = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
 if ( array_sum($ACO_push_due_days) === 1 ){
@@ -19,6 +21,16 @@ if ( array_sum($ACO_push_due_days) === 1 ){
 }
 
 ?>
+
+
+<?php if ($ACO_expanded_latest_comment  && $task['nb_comments'] > 0): ?>
+    <?php $ACO_latest_comment = $this->task->commentModel->getLatest($task['id']); ?>
+    <?php $ACO_latest_comment_tooltip =  t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])); ?>
+    <div class="aco_expanded_latest_comment">
+        <span class="aco_comment_icon" title="<?= $ACO_latest_comment_tooltip ?>" role="img" aria-label="<?= $ACO_latest_comment_tooltip ?>">
+            <i class="fa fa-commenting" aria-></i></span><?= $this->helper->text->markdown($ACO_latest_comment['comment']) ?>
+    </div>
+<?php endif ?>
 
 <?php if (! empty($task['category_id'])): ?>
 <div class="task-board-category-container task-board-category-container-color">
