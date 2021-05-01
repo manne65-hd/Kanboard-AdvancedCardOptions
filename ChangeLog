@@ -1,13 +1,18 @@
 Version 0.2.2 (May 1, 2021)
 -------------------------------
-* Option to Indicate due today or overdue as mouseover-tooltip in collapsed card-view
-* Option to hide the EDIT-button in collapsed card-view
+* Added option to indicate due today or overdue as mouseover-tooltip in collapsed card-view
+* Added option to hide the EDIT-button in collapsed card-view
+* Fixed and improved the optional push-due-date-menus in task-dropdown
+* Updated AdvancedTaskOptions in application-settings
+* Added options to display tags and/or category in collapsed card-view
+  * Needs further improvement, so that this can happen on one "line"
+* changed some wording in changelog
 
 Version 0.2.1 (April 30, 2021)
 -------------------------------
-* Option to display task-description as popover in collapsed view is now configurable
+* Added option to display task-description as popover in collapsed view is now configurable
  * Currently only from the custom project-settings!
-* Option to display latest comment as popover in collapsed view is now configurable
+* Added option to display latest comment as popover in collapsed view is now configurable
   * Currently only from the custom project-settings!
   * In fact for now it's not showing the latest comment, but it is rather a copy of the same link as in expanded view
 

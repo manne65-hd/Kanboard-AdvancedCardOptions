@@ -8,3 +8,16 @@
 .aco_dimmed {
   opacity: 0.3;
 }
+
+.aco_collapsed_tags_category{
+    // will have to work on this later > force category to appear on same "line" as tags
+    margin-top : 1px !important;
+    border-top: 1px dotted; /* this is rather for debugging during development! */
+    padding: 2px;
+}
+
+.aco-board-category-container {
+    // will have to work on this later > force category to appear on same "line" as tags
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}

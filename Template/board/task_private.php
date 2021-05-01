@@ -7,6 +7,8 @@ $ACO_collapsed_hide_edit        = $this->helper->AdvancedCardOptionsHelper->getP
 $ACO_collapsed_description      = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_description');
 $ACO_collapsed_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_latest_comment');
 $ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_due_date');
+$ACO_collapsed_tags             = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_tags');
+$ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_category');
 
 ?>
 <div class="
@@ -89,6 +91,45 @@ $ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getP
             <?php endif ?>
             <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', $this->text->e($task['title'])) ?>
         </div>
+
+        <?php if ($ACO_collapsed_tags && ! empty($task['tags']) || ($ACO_collapsed_category && ! empty($task['category_id']))): ?>
+            <div class="aco_collapsed_tags_category">
+        <?php endif ?>
+        <?php if ($ACO_collapsed_tags && ! empty($task['tags'])): ?>
+            <div class="task-tags">
+                <ul>
+                <?php foreach ($task['tags'] as $tag): ?>
+                    <li class="task-tag <?= $tag['color_id'] ? "color-{$tag['color_id']}" : '' ?>"><?= $this->text->e($tag['name']) ?></li>
+                <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif ?>
+
+        <?php if ($ACO_collapsed_category && ! empty($task['category_id'])): ?>
+        <div class="task-board-category-container task-board-category-container-color aco-board-category-container">
+            <span class="task-board-category category-<?= $this->text->e($task['category_name']) ?> <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>">
+                <?php if ($not_editable): ?>
+                    <?= $this->text->e($task['category_name']) ?>
+                <?php else: ?>
+                    <?= $this->url->link(
+                        $this->text->e($task['category_name']),
+                        'TaskModificationController',
+                        'edit',
+                        array('task_id' => $task['id'], 'project_id' => $task['project_id']),
+                        false,
+                        'js-modal-large' . (! empty($task['category_description']) ? ' tooltip' : ''),
+                        t('Change category')
+                    ) ?>
+                    <?php if (! empty($task['category_description'])): ?>
+                        <?= $this->app->tooltipMarkdown($task['category_description']) ?>
+                    <?php endif ?>
+                <?php endif ?>
+            </span>
+        </div>
+        <?php endif ?>
+        <?php if ($ACO_collapsed_tags && ! empty($task['tags']) || ($ACO_collapsed_category && ! empty($task['category_id']))): ?>
+            </div>
+        <?php endif ?>
     <?php else: ?>
         <div class="task-board-expanded">
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse fa-2x"></i></div>
