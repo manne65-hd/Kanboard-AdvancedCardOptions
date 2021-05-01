@@ -6,7 +6,7 @@ Version 0.2.2 (May 1, 2021)
 * Updated AdvancedTaskOptions in application-settings
 * Added options to display tags and/or category in collapsed card-view
   * Needs further improvement, so that this can happen on one "line"
-* changed some wording in changelog
+* changed some wording in changelog / Updated README.md
 
 Version 0.2.1 (April 30, 2021)
 -------------------------------
