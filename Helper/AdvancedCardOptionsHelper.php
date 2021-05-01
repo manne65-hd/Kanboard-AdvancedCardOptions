@@ -25,7 +25,7 @@ class AdvancedCardOptionsHelper extends TaskHelper
         'ACO_push_due_days_1' => 0,
         'ACO_push_due_days_2' => 0,
         'ACO_push_due_days_3' => 0,
-        'ACO_show_push_duebtn_dropdown' => 1,
+        'ACO_show_push_duebtn_dropdown' => 0,
         'ACO_show_push_duebtn_taskview' =>0,
         'ACO_remove_due_date' => 0,
         'ACO_create_due_date' => 0,

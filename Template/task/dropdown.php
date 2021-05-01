@@ -2,6 +2,8 @@
 // Get the configuration for the project / task
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($task['project_id']);
 $ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+$ACO_show_push_duebtn_dropdown = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_show_push_duebtn_dropdown');
+
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date
 $ACO_show_duedate_icons = array_sum($ACO_push_due_days) ? TRUE : FALSE;
@@ -10,7 +12,7 @@ $ACO_show_duedate_icons = array_sum($ACO_push_due_days) ? TRUE : FALSE;
 
 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
     <?php if (time() > $task['date_due'] || date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
-        <?php if ($ACO_show_duedate_icons): ?>
+        <?php if ($ACO_show_duedate_icons && $ACO_show_push_duebtn_dropdown): ?>
 
             <?php if ($ACO_push_due_days[1] > 0) : ?>
                 <li>
