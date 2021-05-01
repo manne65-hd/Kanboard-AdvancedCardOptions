@@ -43,6 +43,10 @@
     font-size: 0.9em;
     line-height: 1.2em;
     max-height: 4.8em;
+
+    /* this is for Firefox */
+    scrollbar-color: #555 #F5F5F5 !important;
+    scrollbar-width: thin !important;
 }
 
 .aco_expanded_latest_comment::-webkit-scrollbar-track
