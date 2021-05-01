@@ -21,8 +21,9 @@ class ConfigController extends \Kanboard\Controller\ConfigController
                 'ACO_collapsed_description'     => $this->configModel->get('ACO_collapsed_description', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_description']),
                 'ACO_collapsed_latest_comment'  => $this->configModel->get('ACO_collapsed_latest_comment', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_latest_comment']),
                 'ACO_collapsed_due_date'        => $this->configModel->get('ACO_collapsed_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_due_date']),
-                'ACO_collapsed_tags'             => $this->configModel->get('ACO_collapsed_tags', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_tags']),
-                'ACO_collapsed_category'         => $this->configModel->get('ACO_collapsed_category', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_category']),
+                'ACO_collapsed_tags'            => $this->configModel->get('ACO_collapsed_tags', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_tags']),
+                'ACO_collapsed_category'        => $this->configModel->get('ACO_collapsed_category', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_category']),
+                'ACO_expanded_latest_comment'   => $this->configModel->get('ACO_expanded_latest_comment', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_expanded_latest_comment']),
             ),
         )));
     }
@@ -39,6 +40,7 @@ class ConfigController extends \Kanboard\Controller\ConfigController
         $values += array('ACO_collapsed_due_date' => 0);
         $values += array('ACO_collapsed_tags' => 0);
         $values += array('ACO_collapsed_category' => 0);
+        $values += array('ACO_expanded_latest_comment' => 0);
 
         if ($this->configModel->save($values)) {
             $this->flash->success(t('Settings saved successfully.'));

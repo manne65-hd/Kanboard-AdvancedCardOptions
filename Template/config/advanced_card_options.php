@@ -17,6 +17,10 @@
                     <?= $this->form->checkbox('ACO_collapsed_category', t('Show category'), 1, $values['ACO_collapsed_category'] == 1) ?>
                     <p class="form-help"><?= t('If showing tags and/or category is enabled, collapsed view will "grow" to have 2 lines!'); ?></p>
             </fieldset>
+            <fieldset>
+                <legend><?= t('Expanded card-view') ?></legend>
+                    <?= $this->form->checkbox('ACO_expanded_latest_comment', t('Show latest comment'), 1, $values['ACO_expanded_latest_comment'] == 1) ?>
+            </fieldset>
     </fieldset>
 
     <fieldset>

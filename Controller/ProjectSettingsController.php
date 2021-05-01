@@ -32,8 +32,9 @@ class ProjectSettingsController extends BaseController
                 'ACO_collapsed_description'     => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_description', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_description']),
                 'ACO_collapsed_latest_comment'  => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_latest_comment', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_latest_comment']),
                 'ACO_collapsed_due_date'        => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_due_date']),
-                'ACO_collapsed_tags'             => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_tags', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_tags']),
-                'ACO_collapsed_category'         => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_category', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_category']),
+                'ACO_collapsed_tags'            => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_tags', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_tags']),
+                'ACO_collapsed_category'        => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_category', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_category']),
+                'ACO_expanded_latest_comment'   => $this->projectMetadataModel->get($project['id'], 'ACO_expanded_latest_comment', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_expanded_latest_comment']),
                 'project_id' => $_REQUEST['project_id'],
             ),
             'errors' => $errors,
@@ -64,6 +65,7 @@ class ProjectSettingsController extends BaseController
         $this->projectMetadataModel->save($project['id'], array('ACO_collapsed_due_date' => isset($values["ACO_collapsed_due_date"]) ? $values["ACO_collapsed_due_date"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_collapsed_tags' => isset($values["ACO_collapsed_tags"]) ? $values["ACO_collapsed_tags"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_collapsed_category' => isset($values["ACO_collapsed_category"]) ? $values["ACO_collapsed_category"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_expanded_latest_comment' => isset($values["ACO_expanded_latest_comment"]) ? $values["ACO_expanded_latest_comment"] : 0 ));
 
 	    return $this->show($values, $errors);
     }
