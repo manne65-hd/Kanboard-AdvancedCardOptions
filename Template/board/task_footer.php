@@ -25,8 +25,10 @@ if ( array_sum($ACO_push_due_days) === 1 ){
 
 <?php if ($ACO_expanded_latest_comment  && $task['nb_comments'] > 0): ?>
     <?php $ACO_latest_comment = $this->task->commentModel->getLatest($task['id']); ?>
+    <?php $ACO_latest_comment_tooltip =  t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])); ?>
     <div class="aco_expanded_latest_comment">
-        <i class="fa fa-comment"></i><?= $ACO_latest_comment['comment'] ?>
+        <span class="aco_comment_icon" title="<?= $ACO_latest_comment_tooltip ?>" role="img" aria-label="<?= $ACO_latest_comment_tooltip ?>">
+            <i class="fa fa-comment" aria-></i></span><?= $this->helper->text->markdown($ACO_latest_comment['comment']) ?>
     </div>
 <?php endif ?>
 

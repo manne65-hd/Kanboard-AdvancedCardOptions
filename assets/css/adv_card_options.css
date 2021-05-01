@@ -22,6 +22,11 @@
     margin-bottom: 2px !important;
 }
 
+.aco_comment_icon{
+    padding-right: 5px;
+    margin-bottom: 0px;
+    float:left;
+}
 .aco_expanded_latest_comment{
     margin: 0px 2px;
     border: 1px dotted;
@@ -30,7 +35,7 @@
     padding: 0.2em;
     color: #555;
     font-size: 0.9em;
-    line-height: 1em;
+    line-height: 1.2em;
 
     /* will have to work on this later ...
     display: block;
