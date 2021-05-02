@@ -97,8 +97,20 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
 
             <?php if ($ACO_collapsed_category && ! empty($task['category_id'])): ?>
                 <li class="aco_category_pill task-tag <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>">
-                    <i class="fa fa-folder-open" role="img" title="<?= t('Category> ') . $this->text->e($task['category_name']) ?>" aria-label="<?= t('Category> ') . $this->text->e($task['category_name']) ?>"></i>
-                    <?= $this->text->e($task['category_name']) ?>
+                    <i class="fa fa-folder-open" role="img" title="<?= t('Category ... ') ?>" aria-label="<?= t('Category ... ') ?>"></i>
+                    <?php if ($not_editable): ?>
+                        <?= $this->text->e($task['category_name']) ?>
+                    <?php else: ?>
+                        <?= $this->url->link(
+                            $this->text->e($task['category_name']),
+                            'TaskModificationController',
+                            'edit',
+                            array('task_id' => $task['id'], 'project_id' => $task['project_id']),
+                            false,
+                            'js-modal-large' . (! empty($task['category_description']) ? ' tooltip' : ''),
+                            t('Change category')
+                        ) ?>
+                    <?php endif ?>
                     <?php if (! empty($task['category_description'])): ?>
                         <?= $this->app->tooltipMarkdown($task['category_description']) ?>
                     <?php endif ?>
