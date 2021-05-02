@@ -78,4 +78,42 @@ class AdvancedCardOptionsController extends BaseController
             )));
         }
     }
+
+    public function createDueDate()
+    {
+	$template = 'AdvancedCardOptions:self/confirm/confirm_create_due_date';
+	$success_message = t('Task due-date has been successfully set.');
+	$failure_message = t('Error while trying to set the due-date of this task.');
+
+	$project = $this->getProject();
+	$task = $this->getTask();
+
+    // Calculate the date + time of the requested pushed due-date
+    $pushed_date_due = $this->helper->AdvancedCardOptionsHelper->getPushedDateDue(time(), $_REQUEST['push_days']);
+    $task['confirm_pushed_date_due'] = $pushed_date_due['formatted'];
+
+	if ($this->request->getStringParam('confirmation') === 'yes') {
+            $this->checkCSRFParam();
+		$values = array();
+		$valuesx = $task;
+		$tagsx = $this->taskTagModel->getTagsByTask($task['id']);
+		$values['id'] = $valuesx['id'];
+		$values['title'] = $valuesx['title'];
+
+	if (true){
+        $values['date_due'] = $pushed_date_due['raw'];
+
+		$this->taskModificationModel->update($values);
+                $this->flash->success($success_message);
+            } else {
+                $this->flash->failure($failure_message);
+            }
+
+            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])), true);
+        } else {
+            $this->response->html($this->template->render($template, array(
+                'task' => $task,
+            )));
+        }
+    }
 }
