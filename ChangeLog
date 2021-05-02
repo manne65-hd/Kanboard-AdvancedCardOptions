@@ -1,3 +1,10 @@
+Version 0.3.1 (May 2, 2021)
+-------------------------------
+* Enabled "condensed" display of tags and category in collapsed card-view
+* Added a nice scrollbar to latest comment in expanded card-view
+* Fixed error, where "inactive" latest-comment-icon appeared, although not configured to do so
+* Fixed bug where push-due-days would not show in app-settings-page
+
 Version 0.3.0 (May 1, 2021)
 -------------------------------
 * Added option to view latest comment in expanded card-view
