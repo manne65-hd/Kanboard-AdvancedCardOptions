@@ -22,12 +22,6 @@ class AdvancedCardOptionsHelper extends TaskHelper
     */
     public $ACO_defaults = array(
         'ACO_project_config_method' => 'ACO_project_config_defaults',
-        'ACO_push_due_days_1' => 0,
-        'ACO_push_due_days_2' => 0,
-        'ACO_push_due_days_3' => 0,
-        'ACO_show_push_duebtn_dropdown' => 0,
-        'ACO_remove_due_date' => 0,
-        'ACO_create_due_date' => 0,
         'ACO_collapsed_hide_edit' => 0,
         'ACO_collapsed_description' => 0,
         'ACO_collapsed_latest_comment' => 0,
@@ -35,6 +29,12 @@ class AdvancedCardOptionsHelper extends TaskHelper
         'ACO_collapsed_tags' => 0,
         'ACO_collapsed_category' => 0,
         'ACO_expanded_latest_comment' => 0,
+        'ACO_push_due_days_1' => 0,
+        'ACO_push_due_days_2' => 0,
+        'ACO_push_due_days_3' => 0,
+        'ACO_show_push_duebtn_dropdown' => 0,
+        'ACO_remove_due_date' => 0,
+        'ACO_create_due_date' => 0,
     );
 
 
