@@ -10,16 +10,18 @@
 }
 
 .aco_collapsed_tags_category{
-    // will have to work on this later > force category to appear on same "line" as tags
-    margin-top: 1px !important;
-    //border-top: 1px dotted; /* this is rather for debugging during development! */
-    padding: 2px;
+    /* border: 1px dotted; /* this is rather for debugging during development! */
+    min-height: 1.6em;
 }
 
-.aco-board-category-container {
-    // will have to work on this later > force category to appear on same "line" as tags
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
+.aco_category_pill {
+    float: right !important;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #000;
+    padding: 1px 3px 1px 2px;
+    border-radius: 3px;
+    margin-right: 0px !important;
 }
 
 .aco_comment_icon{
