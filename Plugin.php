@@ -56,12 +56,12 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '0.3.1';
+        return '0.3.2';
     }
 
     public function getPluginHomepage()
     {
-        return 'https://github.com/manne65-hd/AdvancedCardOptions';
+        return 'https://github.com/manne65-hd/Kanboard-AdvancedCardOptions';
     }
 }
 ?>
