@@ -2,7 +2,10 @@ Version 0.3.2 (May 4, 2021)
 -------------------------------
 * minor changes to english language
 * updated german translations
+<<<<<<< HEAD
 * fix bug in order to correctly handle the "Show buttons to create a due date ..."-feature
+=======
+>>>>>>> db5b0be0137b7ee4b6586d487abc2a048bbe3ac3
 
 Version 0.3.1 (May 2, 2021)
 -------------------------------
