@@ -3,7 +3,7 @@
 </style>
 <?= $this->modal->mediumIcon(
     'calendar-times-o fa-danger_icon',
-    t('Remove the due-date'),
+    t('Remove the due date'),
     'AdvancedCardOptionsController',
     'removeDueDate',
     array(

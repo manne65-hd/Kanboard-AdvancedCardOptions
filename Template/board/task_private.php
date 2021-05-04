@@ -55,7 +55,7 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
                     $ACO_latest_comment_tooltip .= $ACO_latest_comment['comment'];
                 ?>
                     <i class="fa fa-commenting" title="<?= $ACO_latest_comment_tooltip ?>" aria-label="<?= $ACO_latest_comment_tooltip ?>"></i>
-            <?php else: ?>
+            <?php elseif ($ACO_collapsed_latest_comment  && $task['nb_comments'] === 0): ?>
                     <span class="aco_dimmed"><i class="fa fa-comment"></i></span>
             <?php endif ?>
 
@@ -86,40 +86,39 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
 
         <?php if ($ACO_collapsed_tags && ! empty($task['tags']) || ($ACO_collapsed_category && ! empty($task['category_id']))): ?>
             <div class="aco_collapsed_tags_category">
+                <div class="task-tags">
+                    <ul>
         <?php endif ?>
-        <?php if ($ACO_collapsed_tags && ! empty($task['tags'])): ?>
-            <div class="task-tags">
-                <ul>
-                <?php foreach ($task['tags'] as $tag): ?>
-                    <li class="task-tag <?= $tag['color_id'] ? "color-{$tag['color_id']}" : '' ?>"><?= $this->text->e($tag['name']) ?></li>
-                <?php endforeach ?>
-                </ul>
-            </div>
-        <?php endif ?>
+            <?php if ($ACO_collapsed_tags && ! empty($task['tags'])): ?>
+                    <?php foreach ($task['tags'] as $tag): ?>
+                        <li class="task-tag <?= $tag['color_id'] ? "color-{$tag['color_id']}" : '' ?>"><?= $this->text->e($tag['name']) ?></li>
+                    <?php endforeach ?>
+            <?php endif ?>
 
-        <?php if ($ACO_collapsed_category && ! empty($task['category_id'])): ?>
-        <div class="task-board-category-container task-board-category-container-color aco-board-category-container">
-            <span class="task-board-category category-<?= $this->text->e($task['category_name']) ?> <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>">
-                <?php if ($not_editable): ?>
-                    <?= $this->text->e($task['category_name']) ?>
-                <?php else: ?>
-                    <?= $this->url->link(
-                        $this->text->e($task['category_name']),
-                        'TaskModificationController',
-                        'edit',
-                        array('task_id' => $task['id'], 'project_id' => $task['project_id']),
-                        false,
-                        'js-modal-large' . (! empty($task['category_description']) ? ' tooltip' : ''),
-                        t('Change category')
-                    ) ?>
+            <?php if ($ACO_collapsed_category && ! empty($task['category_id'])): ?>
+                <li class="aco_category_pill task-tag <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>">
+                    <i class="fa fa-folder-open" role="img" title="<?= t('Category ... ') ?>" aria-label="<?= t('Category ... ') ?>"></i>
+                    <?php if ($not_editable): ?>
+                        <?= $this->text->e($task['category_name']) ?>
+                    <?php else: ?>
+                        <?= $this->url->link(
+                            $this->text->e($task['category_name']),
+                            'TaskModificationController',
+                            'edit',
+                            array('task_id' => $task['id'], 'project_id' => $task['project_id']),
+                            false,
+                            'js-modal-large' . (! empty($task['category_description']) ? ' tooltip' : ''),
+                            t('Change category')
+                        ) ?>
+                    <?php endif ?>
                     <?php if (! empty($task['category_description'])): ?>
                         <?= $this->app->tooltipMarkdown($task['category_description']) ?>
                     <?php endif ?>
-                <?php endif ?>
-            </span>
-        </div>
-        <?php endif ?>
+                </li>
+            <?php endif ?>
         <?php if ($ACO_collapsed_tags && ! empty($task['tags']) || ($ACO_collapsed_category && ! empty($task['category_id']))): ?>
+                    </ul>
+                </div>
             </div>
         <?php endif ?>
     <?php else: ?>

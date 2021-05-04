@@ -10,17 +10,23 @@
 }
 
 .aco_collapsed_tags_category{
-    // will have to work on this later > force category to appear on same "line" as tags
-    margin-top: 1px !important;
-    //border-top: 1px dotted; /* this is rather for debugging during development! */
-    padding: 2px;
+    /* border: 1px dotted; /* this is rather for debugging during development! */
+    min-height: 1.6em;
 }
 
-.aco-board-category-container {
-    // will have to work on this later > force category to appear on same "line" as tags
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
+.aco_category_pill {
+    float: right !important;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #000;
+    padding: 1px 3px 1px 2px;
+    border-radius: 3px;
+    margin-right: 0px !important;
 }
+.aco_category_pill a:hover {
+    text-decoration: underline
+}
+
 
 .aco_comment_icon{
     padding-right: 5px;
@@ -28,6 +34,12 @@
     float:left;
 }
 .aco_expanded_latest_comment{
+    display: block;
+    text-overflow: ellipsis !important;
+    word-wrap:normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+
     margin: 0px 2px;
     border: 1px dotted;
     border-color: #555;
@@ -36,11 +48,26 @@
     color: #555;
     font-size: 0.9em;
     line-height: 1.2em;
+    max-height: 4.8em;
 
-    display: block;
-    text-overflow: ellipsis !important;
-    word-wrap:normal;
-    overflow: hidden;
-    /* maybe later I can make this configurable ? */
-    max-height: 3.6em;
+    /* this is for Firefox */
+    scrollbar-color: #555 #F5F5F5 !important;
+    scrollbar-width: thin !important;
+}
+
+.aco_expanded_latest_comment::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.aco_expanded_latest_comment::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.aco_expanded_latest_comment::-webkit-scrollbar-thumb
+{
+	background-color: #555;
 }

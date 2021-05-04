@@ -3,7 +3,7 @@
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
 $ACO_push_due_days           = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
 $ACO_remove_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
-$ACO_create_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_create_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
 $ACO_expanded_latest_comment = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
@@ -127,6 +127,12 @@ if ( array_sum($ACO_push_due_days) === 1 ){
                     <?= $this->dt->datetime($task['date_due']) ?>
                 <?php endif ?>
             </span>
+        <?php elseif ($ACO_create_due_date && empty($task['date_due'])): ?>
+            <i class="fa fa-calendar" role="img" title="<?= t('Set due date by clicking one of the "+buttons" ...') ?>" aria-label="<?= t('Set due date by clicking one of the "+buttons" ...') ?>"></i>
+            <?= $this->render('AdvancedCardOptions:self/card/icons_create_due_date', array(
+                'task' => $task,
+                'project' => $project,
+            )) ?>
         <?php endif ?>
     </div>
     <div class="task-board-icons-row">

@@ -15,9 +15,9 @@ $ACO_show_duedate_icons = array_sum($ACO_push_due_days) ? TRUE : FALSE;
 
             <?php if ($ACO_push_due_days[1] > 0): ?>
                 <?php if ($ACO_push_due_days[1] === '1'):?>
-                    <?php $ACO_menu_push_due1 = t('Push due-date for 1 day'); ?>
+                    <?php $ACO_menu_push_due1 = t('Push due date for 1 day'); ?>
                 <?php else: ?>
-                    <?php $ACO_menu_push_due1 = t('Push due-date for %s days',$ACO_push_due_days[1]); ?>
+                    <?php $ACO_menu_push_due1 = t('Push due date for %s days',$ACO_push_due_days[1]); ?>
                 <?php endif ?>
                 <li>
                 <?= $this->modal->confirm(
@@ -38,9 +38,9 @@ $ACO_show_duedate_icons = array_sum($ACO_push_due_days) ? TRUE : FALSE;
 
             <?php if ($ACO_push_due_days[2] > 0) : ?>
                 <?php if ($ACO_push_due_days[2] === '1'):?>
-                    <?php $ACO_menu_push_due2 = t('Push due-date for 1 day'); ?>
+                    <?php $ACO_menu_push_due2 = t('Push due date for 1 day'); ?>
                 <?php else: ?>
-                    <?php $ACO_menu_push_due2 = t('Push due-date for %s days',$ACO_push_due_days[2]); ?>
+                    <?php $ACO_menu_push_due2 = t('Push due date for %s days',$ACO_push_due_days[2]); ?>
                 <?php endif ?>
                 <li>
                 <?= $this->modal->confirm(
@@ -61,9 +61,9 @@ $ACO_show_duedate_icons = array_sum($ACO_push_due_days) ? TRUE : FALSE;
 
             <?php if ($ACO_push_due_days[3] > 0) : ?>
                 <?php if ($ACO_push_due_days[3] === '1'):?>
-                    <?php $ACO_menu_push_due3 = t('Push due-date for 1 day'); ?>
+                    <?php $ACO_menu_push_due3 = t('Push due date for 1 day'); ?>
                 <?php else: ?>
-                    <?php $ACO_menu_push_due3 = t('Push due-date for %s days',$ACO_push_due_days[3]); ?>
+                    <?php $ACO_menu_push_due3 = t('Push due date for %s days',$ACO_push_due_days[3]); ?>
                 <?php endif ?>
                 <li>
                 <?= $this->modal->confirm(

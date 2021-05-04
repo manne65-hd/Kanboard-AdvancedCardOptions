@@ -1,3 +1,17 @@
+Version 0.3.2 (May 4, 2021)
+-------------------------------
+* minor changes to english language
+* updated german translations
+* fix bug in order to correctly handle the "Show buttons to create a due date ..."-feature
+
+Version 0.3.1 (May 2, 2021)
+-------------------------------
+* Add up to 3 buttons to set the due date of the task in expanded card-view
+* Enabled "condensed" display of tags and category in collapsed card-view
+* Added a nice scrollbar to latest comment in expanded card-view
+* Fixed error, where "inactive" latest-comment-icon appeared, although not configured to do so
+* Fixed bug where push-due-days would not show in app-settings-page
+
 Version 0.3.0 (May 1, 2021)
 -------------------------------
 * Added option to view latest comment in expanded card-view
@@ -8,7 +22,7 @@ Version 0.2.2 (May 1, 2021)
 -------------------------------
 * Added option to indicate due today or overdue as mouseover-tooltip in collapsed card-view
 * Added option to hide the EDIT-button in collapsed card-view
-* Fixed and improved the optional push-due-date-menus in task-dropdown
+* Fixed and improved the optional push-due date-menus in task-dropdown
 * Updated AdvancedTaskOptions in application-settings
 * Added options to display tags and/or category in collapsed card-view
   * Needs further improvement, so that this can happen on one "line"
@@ -24,20 +38,20 @@ Version 0.2.1 (April 30, 2021)
 
 Version 0.2.0 (April 28, 2021)
 -------------------------------
-* Preserve the time(of the old due-date) when calculating the new due-date
+* Preserve the time(of the old due date) when calculating the new due date
 * Move Popover-Icon for the description to the left (to avoid overflow-issues with title-div)
 * INTERNAL changes
  * Reorganized folder-structure for templates
  * Renamed BoardSettingsController > ProjectSettingsController
- * Added new helper-method for calculating the new pushed due-date
+ * Added new helper-method for calculating the new pushed due date
 
 Version 0.1.0 (April 18, 2021)
 -------------------------------
 
 * Added a Helper to handle using the configuration-parameters and more
  * Now providing all default-values for settings-dialog, etc.
-* Added the option to remove the due-date
-* Added push due-date-links to task-dropdown
+* Added the option to remove the due date
+* Added push due date-links to task-dropdown
 * Renamed some of the meta-data-variables used to configure the plugin
 
 Version 0.0.3 (April 18, 2021)
@@ -49,8 +63,8 @@ Version 0.0.2 (April 17, 2021)
 -------------------------------
 
 * Initial working BETA version
-  * Ability to store the push due-date intervals per project
+  * Ability to store the push due date intervals per project
   * Ability to store application-wide defaults
-  * Display (working) links to enable pushing the due-date
+  * Display (working) links to enable pushing the due date
   * [Hardcoded] Display the task-description as a mouseover-popup in collapsed view.
   * Includes both german language-versions
