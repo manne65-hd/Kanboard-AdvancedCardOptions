@@ -36,8 +36,8 @@ ToDo ...
 --------
 - [ ] Improve LatestComment-tooltip _(collapsed card-view)_ to display as a "Kanboard-tooltip" with rendered Markdown
 - [ ] Add options to control time _(hh:mm)_ of newly set due date
-- [ ] Update german translation
-- [ ] Add screenshots to provide previews of the functionailty in README.md
+- [x] Update german translations
+- [ ] Add screenshots to provide previews of the functionality in README.md
 
 Planned _(new)_ features
 --------

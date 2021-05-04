@@ -1,3 +1,9 @@
+Version 0.3.2 (May 4, 2021)
+-------------------------------
+* minor changes to english language
+* updated german translations
+* fix bug in order to correctly handle the "Show buttons to create a due date ..."-feature
+
 Version 0.3.1 (May 2, 2021)
 -------------------------------
 * Add up to 3 buttons to set the due date of the task in expanded card-view
