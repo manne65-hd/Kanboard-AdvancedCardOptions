@@ -3,7 +3,7 @@
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
 $ACO_push_due_days           = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
 $ACO_remove_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
-$ACO_create_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_create_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
 $ACO_expanded_latest_comment = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
