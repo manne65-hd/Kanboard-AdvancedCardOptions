@@ -12,10 +12,10 @@ Allows advanced control over the appearance _(and options)_ of the task-cards in
 - Allow to indicate due-today or overdue in collapsed view.
 - Allow to display tags and/or category in collapsed view.
 - Allow to view the latest comment in expanded view
-- Add up to 3 buttons to push the due-date of the task.
-- Add up to 3 links in the task-dropdown-menu to push the due-date
-- Add a button to remove the due-date of the task.
-- Add up to 3 buttons to set the due-date of the task.
+- Add up to 3 buttons to push the due date of the task.
+- Add up to 3 links in the task-dropdown-menu to push the due date
+- Add a button to remove the due date of the task.
+- Add up to 3 buttons to set the due date of the task.
 - Default-preferences for all boards can be set via the "Advanced Card options" in the ADMIN-control-panel
 - ONLY project-managers/admins can override these default-preferences via the "Advanced Card options"-panel on a per-project base
 - includes german translation
@@ -35,7 +35,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 ToDo ...
 --------
 - [ ] Improve LatestComment-tooltip _(collapsed card-view)_ to display as a "Kanboard-tooltip" with rendered Markdown
-- [ ] Add options to control time _(hh:mm)_ of newly set due-date
+- [ ] Add options to control time _(hh:mm)_ of newly set due date
 - [ ] Update german translation
 - [ ] Add screenshots to provide previews of the functionailty in README.md
 
@@ -43,7 +43,7 @@ Planned _(new)_ features
 --------
 - [ ] Add an option to display task-description in expanded card-view (as in latest comment-feature)
 - [ ] Add more options _(text-size, max-lines)_ for displaying latest comment _(and description)_ in expanded card-view
-- [ ] Add an option to use the "condensed view" of tags + category in expanded card-view 
+- [ ] Add an option to use the "condensed view" of tags + category in expanded card-view
 
 Credits
 -------

@@ -1,10 +1,10 @@
 <div class="page-header">
-    <h2><?= t('Push the task\'s due-date') ?></h2>
+    <h2><?= t('Push a task\'s due date') ?></h2>
 </div>
 
 <div class="confirm">
     <p class="alert alert-info">
-        <?= t('New due-date: %s for the task "%s". Are you sure?', $task['confirm_pushed_date_due'], $task['title']) ?>
+        <?= t('New due date %s for this task: "%s". Are you sure?', $task['confirm_pushed_date_due'], $task['title']) ?>
     </p>
 
     <?= $this->modal->confirmButtons(

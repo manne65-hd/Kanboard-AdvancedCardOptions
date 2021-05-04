@@ -10,13 +10,13 @@ class AdvancedCardOptionsController extends BaseController
     public function pushDueDate()
     {
 	$template = 'AdvancedCardOptions:self/confirm/confirm_push_due_date';
-	$success_message = t('Task due-date has been pushed successfully.');
-	$failure_message = t('Error while trying to push the due-date of this task.');
+	$success_message = t('The due date has been pushed successfully');
+	$failure_message = t('Error while trying to push the due date of this task');
 
 	$project = $this->getProject();
 	$task = $this->getTask();
 
-    // Calculate the date + time of the requested pushed due-date
+    // Calculate the date + time of the requested pushed due date
     $pushed_date_due = $this->helper->AdvancedCardOptionsHelper->getPushedDateDue($task['date_due'], $_REQUEST['push_days']);
     $task['confirm_pushed_date_due'] = $pushed_date_due['formatted'];
 
@@ -48,8 +48,8 @@ class AdvancedCardOptionsController extends BaseController
     public function removeDueDate()
     {
 	$template = 'AdvancedCardOptions:self/confirm/confirm_remove_due_date';
-	$success_message = t('Task due-date has been removed successfully.');
-	$failure_message = t('Error while trying to remove the due-date of this task.');
+	$success_message = t('The due date has been removed successfully');
+	$failure_message = t('Error while trying to remove the due date of this task');
 
 	$project = $this->getProject();
 	$task = $this->getTask();
@@ -82,13 +82,13 @@ class AdvancedCardOptionsController extends BaseController
     public function createDueDate()
     {
 	$template = 'AdvancedCardOptions:self/confirm/confirm_create_due_date';
-	$success_message = t('Task due-date has been successfully set.');
-	$failure_message = t('Error while trying to set the due-date of this task.');
+	$success_message = t('The due date has been set successfully');
+	$failure_message = t('Error while trying to set the due date of this task');
 
 	$project = $this->getProject();
 	$task = $this->getTask();
 
-    // Calculate the date + time of the requested pushed due-date
+    // Calculate the date + time of the requested pushed due date
     $pushed_date_due = $this->helper->AdvancedCardOptionsHelper->getPushedDateDue(time(), $_REQUEST['push_days']);
     $task['confirm_pushed_date_due'] = $pushed_date_due['formatted'];
 

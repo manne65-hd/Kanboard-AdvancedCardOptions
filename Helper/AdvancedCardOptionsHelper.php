@@ -107,7 +107,7 @@ class AdvancedCardOptionsHelper extends TaskHelper
     }
 
     /**
-     * Return new (pushed) due-date
+     * Return new (pushed) due date
      *
      * @access public
      * @param int $cur_due_date timestamp for current due_date

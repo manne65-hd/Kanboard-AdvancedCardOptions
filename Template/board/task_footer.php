@@ -128,7 +128,7 @@ if ( array_sum($ACO_push_due_days) === 1 ){
                 <?php endif ?>
             </span>
         <?php elseif ($ACO_create_due_date && empty($task['date_due'])): ?>
-            <i class="fa fa-calendar" role="img" title="<?= t('Set due-date by clicking one of the "+buttons" ...') ?>" aria-label="<?= t('Set due-date by clicking one of the links ...') ?>"></i>
+            <i class="fa fa-calendar" role="img" title="<?= t('Set due date by clicking one of the "+buttons" ...') ?>" aria-label="<?= t('Set due date by clicking one of the "+buttons" ...') ?>"></i>
             <?= $this->render('AdvancedCardOptions:self/card/icons_create_due_date', array(
                 'task' => $task,
                 'project' => $project,
