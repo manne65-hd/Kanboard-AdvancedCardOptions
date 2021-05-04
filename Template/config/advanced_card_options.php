@@ -15,7 +15,7 @@
                     <?= $this->form->checkbox('ACO_collapsed_due_date', t('Indicate due today or overdue as mouseover-tooltip'), 1, $values['ACO_collapsed_due_date'] == 1) ?>
                     <?= $this->form->checkbox('ACO_collapsed_tags', t('Show tags'), 1, $values['ACO_collapsed_tags'] == 1) ?>
                     <?= $this->form->checkbox('ACO_collapsed_category', t('Show category'), 1, $values['ACO_collapsed_category'] == 1) ?>
-                    <p class="form-help"><?= t('If showing tags and/or category is enabled, collapsed view will "grow" to have 2 lines!'); ?></p>
+                    <p class="form-help"><?= t('If showing tags and/or category is enabled, collapsed view will "grow" to have at least 2 lines!'); ?></p>
             </fieldset>
             <fieldset>
                 <legend><?= t('Expanded card-view') ?></legend>
@@ -37,7 +37,7 @@
         <?= $this->form->label(t('3rd Button'), 'ACO_push_due_days_3') ?>
         <?= $this->form->number('ACO_push_due_days_3', $values, $errors, array('autofocus', 'tabindex="3"')) ?>
 
-        <?= $this->form->checkbox('ACO_show_push_duebtn_dropdown', t('Also show "push due date"-buttons in the card-dropdown-menu'), 1, $values['ACO_show_push_duebtn_dropdown'] == 1) ?>
+        <?= $this->form->checkbox('ACO_show_push_duebtn_dropdown', t('Also show "push due date"-commands in the card-dropdown-menu'), 1, $values['ACO_show_push_duebtn_dropdown'] == 1) ?>
 
         <fieldset>
             <legend><?= t('Additional buttons') ?></legend>
