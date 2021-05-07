@@ -129,4 +129,9 @@ class AdvancedCardOptionsHelper extends TaskHelper
 
         return $pushed_date_due;
     }
+
+    public function commentGetLatest($task_id)
+    {
+        return $this->acoCommentModel->getLatest($task_id);
+    }
 }

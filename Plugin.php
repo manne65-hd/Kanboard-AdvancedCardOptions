@@ -4,7 +4,6 @@ namespace Kanboard\Plugin\AdvancedCardOptions;
 
 use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
-use Kanboard\Plugin\AdvancedCardOptions\Model\CommentModel;
 
 
 class Plugin extends Base
@@ -24,12 +23,6 @@ class Plugin extends Base
         //Helpers
         $this->helper->register('AdvancedCardOptionsHelper', '\Kanboard\Plugin\AdvancedCardOptions\Helper\AdvancedCardOptionsHelper');
 
-        // Models
-        $this->container['commentModel'] = $this->container->factory(function ($c) {
-            return new CommentModel($c);
-        });
-
-
         //CSS
         $this->hook->on('template:layout:css', array('template' => 'plugins/AdvancedCardOptions/Assets/css/adv_card_options.css'));
     }
@@ -37,6 +30,15 @@ class Plugin extends Base
     public function onStartup() {
         // load Translation
         Translator::load($this->languageModel->getCurrentLanguage(), __DIR__ . '/Locale');
+    }
+
+    public function getClasses()
+    {
+        return array(
+            'Plugin\AdvancedCardOptions\Model' => array(
+                'AcoCommentModel',
+            )
+        );
     }
 
     public function getPluginName()
