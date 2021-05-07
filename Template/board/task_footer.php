@@ -10,14 +10,17 @@ $ACO_expanded_latest_comment = $this->helper->AdvancedCardOptionsHelper->getPara
 if ( array_sum($ACO_push_due_days) === 1 ){
     $ACO_show_duedate_icons = TRUE;
     $ACO_push_due_days_suffix = t('Day');
+    $ACO_create_due_days_suffix = t('Day');
     $ACO_push_due_days_suffix = ($ACO_remove_due_date) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
 } elseif ( array_sum($ACO_push_due_days) > 1 ) {
     $ACO_show_duedate_icons = TRUE;
     $ACO_push_due_days_suffix = t('Day(s)');
+    $ACO_create_due_days_suffix = t('Day(s)');
     $ACO_push_due_days_suffix = ($ACO_remove_due_date) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
 } else {
     $ACO_show_duedate_icons = ($ACO_remove_due_date) ? TRUE : FALSE;
     $ACO_push_due_days_suffix = '';
+    $ACO_create_due_days_suffix = '';
 }
 
 ?>
@@ -133,6 +136,7 @@ if ( array_sum($ACO_push_due_days) === 1 ){
                 'task' => $task,
                 'project' => $project,
             )) ?>
+            <?= $ACO_create_due_days_suffix; ?>
         <?php endif ?>
     </div>
     <div class="task-board-icons-row">
