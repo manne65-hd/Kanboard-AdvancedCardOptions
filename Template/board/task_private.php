@@ -55,7 +55,7 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
                     $ACO_latest_comment_tooltip .= $ACO_latest_comment['comment'];
                 ?>
                     <i class="fa fa-commenting" title="<?= $ACO_latest_comment_tooltip ?>" aria-label="<?= $ACO_latest_comment_tooltip ?>"></i>
-            <?php elseif ($ACO_collapsed_latest_comment  && $task['nb_comments'] === 0): ?>
+            <?php elseif ($ACO_collapsed_latest_comment  && $task['nb_comments'] === '0'): ?>
                     <span class="aco_dimmed"><i class="fa fa-comment"></i></span>
             <?php endif ?>
 
