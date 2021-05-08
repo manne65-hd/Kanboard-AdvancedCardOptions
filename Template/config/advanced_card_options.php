@@ -19,7 +19,23 @@
             </fieldset>
             <fieldset>
                 <legend><?= t('Expanded card-view') ?></legend>
-                    <?= $this->form->checkbox('ACO_expanded_latest_comment', t('Show latest comment'), 1, $values['ACO_expanded_latest_comment'] == 1) ?>
+                <fieldset>
+                    <legend><?= t('Latest comment') ?></legend>
+                        <?= $this->form->checkbox('ACO_expanded_latest_comment', t('Show latest comment'), 1, $values['ACO_expanded_latest_comment'] == 1) ?>
+                        <fieldset>
+                            <legend><?= t('Text-Size for latest-comment textbox') ?></legend>
+                            <?= $this->form->radios('ACO_comment_scroller_textsize', array(
+                                    'small' => t('Small'),
+                                    'medium' => t('Medium'),
+                                    'normal' => t('Normal'),
+                                ),
+                                $values
+                            ) ?>
+                        </fieldset>
+                        <?= $this->form->label( t('Max (line-)height for latest-comment textbox'), 'ACO_comment_scroller_maxlines') ?>
+                        <?= $this->form->number('ACO_comment_scroller_maxlines', $values, $errors, array('autofocus', 'tabindex="1"')) ?>
+                        <p class="form-help"><?= t('Anything less than 3 or more than 5 will be ignored and show latest-comment textbox with a maximum of 4 lines!'); ?></p>
+                </fieldset>
             </fieldset>
     </fieldset>
 

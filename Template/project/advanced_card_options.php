@@ -32,7 +32,23 @@
             </fieldset>
             <fieldset>
                 <legend><?= t('Expanded card-view') ?></legend>
-                    <?= $this->form->checkbox('ACO_expanded_latest_comment', t('Show latest comment'), 1, $values['ACO_expanded_latest_comment'] == 1) ?>
+                <fieldset>
+                    <legend><?= t('Latest comment') ?></legend>
+                        <?= $this->form->checkbox('ACO_expanded_latest_comment', t('Show latest comment'), 1, $values['ACO_expanded_latest_comment'] == 1) ?>
+                        <fieldset>
+                            <legend><?= t('Text-Size for latest-comment textbox') ?></legend>
+                            <?= $this->form->radios('ACO_comment_scroller_textsize', array(
+                                    'small' => t('Small'),
+                                    'medium' => t('Medium'),
+                                    'normal' => t('Normal'),
+                                ),
+                                $values
+                            ) ?>
+                        </fieldset>
+                        <?= $this->form->label( t('Max (line-)height for latest-comment textbox'), 'ACO_comment_scroller_maxlines') ?>
+                        <?= $this->form->number('ACO_comment_scroller_maxlines', $values, $errors, array('autofocus', 'tabindex="1"')) ?>
+                        <p class="form-help"><?= t('Anything less than 3 or more than 5 will be ignored and show latest-comment textbox with a maximum of 4 lines!'); ?></p>
+                </fieldset>
             </fieldset>
     </fieldset>
 
@@ -41,13 +57,13 @@
         <?= t('Number of days to push the due date:'); ?>
         <p class="form-help"><?= t('Leave blank or set to 0 to disable button') ?></p>
 
-        <?= $this->form->label(t('1st Button'), 'ACO_push_due_days_1') ?>
+        <?= $this->form->label( t('1st Button'), 'ACO_push_due_days_1') ?>
         <?= $this->form->number('ACO_push_due_days_1', $values, $errors, array('autofocus', 'tabindex="1"')) ?>
 
-        <?= $this->form->label(t('2nd Button'), 'ACO_push_due_days_2') ?>
+        <?= $this->form->label( t('2nd Button'), 'ACO_push_due_days_2') ?>
         <?= $this->form->number('ACO_push_due_days_2', $values, $errors, array('autofocus', 'tabindex="2"')) ?>
 
-        <?= $this->form->label(t('3rd Button'), 'ACO_push_due_days_3') ?>
+        <?= $this->form->label( t('3rd Button'), 'ACO_push_due_days_3') ?>
         <?= $this->form->number('ACO_push_due_days_3', $values, $errors, array('autofocus', 'tabindex="3"')) ?>
 
         <?= $this->form->checkbox('ACO_show_push_duebtn_dropdown', t('Also show "push due date"-commands in the card-dropdown-menu'), 1, $values['ACO_show_push_duebtn_dropdown'] == 1) ?>

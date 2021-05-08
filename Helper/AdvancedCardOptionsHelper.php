@@ -36,7 +36,7 @@ class AdvancedCardOptionsHelper extends TaskHelper
         'ACO_remove_due_date' => 0,
         'ACO_create_due_date' => 0,
         'ACO_comment_scroller_maxlines' => 4,
-        'ACO_comment_scroller_textsize' => 'normal',
+        'ACO_comment_scroller_textsize' => 'medium',
     );
 
 

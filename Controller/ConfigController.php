@@ -21,6 +21,8 @@ class ConfigController extends \Kanboard\Controller\ConfigController
                 'ACO_collapsed_tags'            => $this->configModel->get('ACO_collapsed_tags', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_tags']),
                 'ACO_collapsed_category'        => $this->configModel->get('ACO_collapsed_category', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_category']),
                 'ACO_expanded_latest_comment'   => $this->configModel->get('ACO_expanded_latest_comment', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_expanded_latest_comment']),
+                'ACO_comment_scroller_textsize' => $this->configModel->get('ACO_comment_scroller_textsize', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_comment_scroller_textsize']),
+                'ACO_comment_scroller_maxlines' => $this->configModel->get('ACO_comment_scroller_maxlines', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_comment_scroller_maxlines']),
                 'ACO_push_due_days_1'           => $this->configModel->get('ACO_push_due_days_1', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_push_due_days_1']),
                 'ACO_push_due_days_2'           => $this->configModel->get('ACO_push_due_days_2', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_push_due_days_2']),
                 'ACO_push_due_days_3'           => $this->configModel->get('ACO_push_due_days_3', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_push_due_days_3']),
@@ -41,6 +43,8 @@ class ConfigController extends \Kanboard\Controller\ConfigController
         $values += array('ACO_collapsed_tags' => 0);
         $values += array('ACO_collapsed_category' => 0);
         $values += array('ACO_expanded_latest_comment' => 0);
+        $values += array('ACO_comment_scroller_textsize' => 'normal');
+        $values += array('ACO_comment_scroller_maxlines' => 4);
         $values += array('ACO_show_push_duebtn_dropdown' => 0);
         $values += array('ACO_remove_due_date' => 0);
         $values += array('ACO_create_due_date' => 0);

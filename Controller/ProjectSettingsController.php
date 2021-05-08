@@ -29,6 +29,8 @@ class ProjectSettingsController extends BaseController
                 'ACO_collapsed_tags'            => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_tags', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_tags']),
                 'ACO_collapsed_category'        => $this->projectMetadataModel->get($project['id'], 'ACO_collapsed_category', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_collapsed_category']),
                 'ACO_expanded_latest_comment'   => $this->projectMetadataModel->get($project['id'], 'ACO_expanded_latest_comment', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_expanded_latest_comment']),
+                'ACO_comment_scroller_textsize' => $this->projectMetadataModel->get($project['id'], 'ACO_comment_scroller_textsize', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_comment_scroller_textsize']),
+                'ACO_comment_scroller_maxlines' => $this->projectMetadataModel->get($project['id'], 'ACO_comment_scroller_maxlines', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_comment_scroller_maxlines']),
                 'ACO_push_due_days_1'           => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_1', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_push_due_days_1']),
                 'ACO_push_due_days_2'           => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_2', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_push_due_days_2']),
                 'ACO_push_due_days_3'           => $this->projectMetadataModel->get($project['id'], 'ACO_push_due_days_3', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_push_due_days_3']),
@@ -60,6 +62,8 @@ class ProjectSettingsController extends BaseController
         $this->projectMetadataModel->save($project['id'], array('ACO_collapsed_tags' => isset($values["ACO_collapsed_tags"]) ? $values["ACO_collapsed_tags"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_collapsed_category' => isset($values["ACO_collapsed_category"]) ? $values["ACO_collapsed_category"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_expanded_latest_comment' => isset($values["ACO_expanded_latest_comment"]) ? $values["ACO_expanded_latest_comment"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_comment_scroller_textsize' => isset($values["ACO_comment_scroller_textsize"]) ? $values["ACO_comment_scroller_textsize"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_comment_scroller_maxlines' => $values["ACO_comment_scroller_maxlines"]));
 	    $this->projectMetadataModel->save($project['id'], array('ACO_push_due_days_1' => $values["ACO_push_due_days_1"]));
         $this->projectMetadataModel->save($project['id'], array('ACO_push_due_days_2' => $values["ACO_push_due_days_2"]));
         $this->projectMetadataModel->save($project['id'], array('ACO_push_due_days_3' => $values["ACO_push_due_days_3"]));
