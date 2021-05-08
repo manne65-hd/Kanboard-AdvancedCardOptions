@@ -96,32 +96,32 @@ class AdvancedCardOptionsController extends BaseController
         $ACO_create_due_time = strtotime('today ' . $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_time'));
     } else {
         switch ($ACO_create_due_time_mode) {
-            case 'round_down_15':
+            case 'round-down_15':
                 $ACO_round_precision = 60 * 15;
                 $ACO_round_mode = 'floor';
                 break;
 
-            case 'round_down_30':
+            case 'round-down_30':
                 $ACO_round_precision = 60 * 30;
                 $ACO_round_mode = 'floor';
                 break;
 
-            case 'round_down_60':
+            case 'round-down_60':
                 $ACO_round_precision = 60 * 60;
                 $ACO_round_mode = 'floor';
                 break;
 
-            case 'round_up_15':
+            case 'round-up_15':
                 $ACO_round_precision = 60 * 15;
                 $ACO_round_mode = 'ceil';
                 break;
 
-            case 'round_up_30':
+            case 'round-up_30':
                 $ACO_round_precision = 60 * 30;
                 $ACO_round_mode = 'ceil';
                 break;
 
-            case 'round_up_60':
+            case 'round-up_60':
                 $ACO_round_precision = 60 * 60;
                 $ACO_round_mode = 'ceil';
                 break;
