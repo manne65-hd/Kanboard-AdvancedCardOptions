@@ -36,7 +36,7 @@
                     <legend><?= t('Latest comment') ?></legend>
                         <?= $this->form->checkbox('ACO_expanded_latest_comment', t('Show latest comment'), 1, $values['ACO_expanded_latest_comment'] == 1) ?>
                         <fieldset>
-                            <legend><?= t('Text-Size for latest-comment textbox') ?></legend>
+                            <legend><?= t('Text-Size for the "latest-comment" textbox') ?></legend>
                             <?= $this->form->radios('ACO_comment_scroller_textsize', array(
                                     'small' => t('Small'),
                                     'medium' => t('Medium'),
@@ -45,7 +45,7 @@
                                 $values
                             ) ?>
                         </fieldset>
-                        <?= $this->form->label( t('Max (line-)height for latest-comment textbox'), 'ACO_comment_scroller_maxlines') ?>
+                        <?= $this->form->label( t('Max (line-)height for the "latest-comment" textbox'), 'ACO_comment_scroller_maxlines') ?>
                         <?= $this->form->number('ACO_comment_scroller_maxlines', $values, $errors, array('autofocus', 'tabindex="1"')) ?>
                         <p class="form-help"><?= t('Anything less than 3 or more than 5 will be ignored and show latest-comment textbox with a maximum of 4 lines!'); ?></p>
                 </fieldset>
@@ -71,7 +71,26 @@
         <fieldset>
             <legend><?= t('Additional buttons') ?></legend>
             <?= $this->form->checkbox('ACO_remove_due_date', t('Show a button to remove the due date'), 1, $values['ACO_remove_due_date'] == 1) ?>
-            <?= $this->form->checkbox('ACO_create_due_date', t('Show buttons to create a due date(Will use the same intervals as configured above)'), 1, $values['ACO_create_due_date'] == 1) ?>
+            <fieldset>
+                <legend><?= t('Create due date') ?></legend>
+                    <?= $this->form->checkbox('ACO_create_due_date', t('Show buttons to create a due date(Will use the same intervals as configured above)'), 1, $values['ACO_create_due_date'] == 1) ?>
+                    <fieldset>
+                        <legend><?= t('Time to be used for the new due date(relative to the moment, when setting it.)') ?></legend>
+                        <?= $this->form->select('ACO_create_due_time_mode', array(
+                                'round-down_15' => t('Round down to last quarter hour'),
+                                'round-down_30' => t('Round down to last half hour'),
+                                'round-down_60' => t('Round down to last full hour'),
+                                'round-up_15' => t('Round up to next quarter hour'),
+                                'round-up_30' => t('Round up to next half hour'),
+                                'round-up_60' => t('Round up to next full hour'),
+                                'fixed' => t('Fixed time of day(configured below)'),
+                            ),
+                            $values
+                        ) ?>
+                    </fieldset>
+                    <?= $this->form->label( t('Fixed time of day(e.g.: 08:00)'), 'ACO_create_due_time') ?>
+                    <?= $this->form->text('ACO_create_due_time', $values, $errors) ?>
+            </fieldset>
         </fieldset>
     </fieldset>
 

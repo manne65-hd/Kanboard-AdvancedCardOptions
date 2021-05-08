@@ -29,6 +29,8 @@ class ConfigController extends \Kanboard\Controller\ConfigController
                 'ACO_show_push_duebtn_dropdown' => $this->configModel->get('ACO_show_push_duebtn_dropdown', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_show_push_duebtn_dropdown']),
                 'ACO_remove_due_date'           => $this->configModel->get('ACO_remove_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_remove_due_date']),
                 'ACO_create_due_date'           => $this->configModel->get('ACO_create_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_create_due_date']),
+                'ACO_create_due_time_mode'      => $this->configModel->get('ACO_create_due_time_mode', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_create_due_time_mode']),
+                'ACO_create_due_time'           => $this->configModel->get('ACO_create_due_time', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_create_due_time']),
             ),
         )));
     }
@@ -48,6 +50,8 @@ class ConfigController extends \Kanboard\Controller\ConfigController
         $values += array('ACO_show_push_duebtn_dropdown' => 0);
         $values += array('ACO_remove_due_date' => 0);
         $values += array('ACO_create_due_date' => 0);
+        $values += array('ACO_create_due_time_mode' => 'fixed');
+        $values += array('ACO_create_due_time' => '00:00');
 
         if ($this->configModel->save($values)) {
             $this->flash->success(t('Settings saved successfully.'));

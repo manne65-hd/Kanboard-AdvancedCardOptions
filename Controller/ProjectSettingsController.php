@@ -37,6 +37,8 @@ class ProjectSettingsController extends BaseController
                 'ACO_show_push_duebtn_dropdown' => $this->projectMetadataModel->get($project['id'], 'ACO_show_push_duebtn_dropdown', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_show_push_duebtn_dropdown']),
                 'ACO_remove_due_date'           => $this->projectMetadataModel->get($project['id'], 'ACO_remove_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_remove_due_date']),
                 'ACO_create_due_date'           => $this->projectMetadataModel->get($project['id'], 'ACO_create_due_date', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_create_due_date']),
+                'ACO_create_due_time_mode'      => $this->projectMetadataModel->get($project['id'], 'ACO_create_due_time_mode', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_create_due_time_mode']),
+                'ACO_create_due_time'           => $this->projectMetadataModel->get($project['id'], 'ACO_create_due_time', $this->helper->AdvancedCardOptionsHelper->ACO_defaults['ACO_create_due_time']),
                 'project_id' => $_REQUEST['project_id'],
             ),
             'errors' => $errors,
@@ -70,6 +72,8 @@ class ProjectSettingsController extends BaseController
         $this->projectMetadataModel->save($project['id'], array('ACO_show_push_duebtn_dropdown' => isset($values["ACO_show_push_duebtn_dropdown"]) ? $values["ACO_show_push_duebtn_dropdown"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_remove_due_date' => isset($values["ACO_remove_due_date"]) ? $values["ACO_remove_due_date"] : 0 ));
         $this->projectMetadataModel->save($project['id'], array('ACO_create_due_date' => isset($values["ACO_create_due_date"]) ? $values["ACO_create_due_date"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_create_due_time_mode' => isset($values["ACO_create_due_time_mode"]) ? $values["ACO_create_due_time_mode"] : 0 ));
+        $this->projectMetadataModel->save($project['id'], array('ACO_create_due_time' => $values["ACO_create_due_time"]));
 
 	    return $this->show($values, $errors);
     }
