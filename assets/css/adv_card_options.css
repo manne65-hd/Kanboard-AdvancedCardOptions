@@ -28,12 +28,12 @@
 }
 
 
-.aco_comment_icon{
+.aco_scroller_icon{
     padding-right: 5px;
     margin-bottom: 0px;
     float:left;
 }
-.aco_expanded_latest_comment{
+.aco_scroller_text{
     display: block;
     text-overflow: ellipsis !important;
     word-wrap:normal;
@@ -46,28 +46,79 @@
     border-radius: 4px;
     padding: 0.2em;
     color: #555;
-    font-size: 0.9em;
-    line-height: 1.2em;
-    max-height: 4.8em;
 
-    /* this is for Firefox */
+    /* Small scrollbar for Firefox */
     scrollbar-color: #555 #F5F5F5 !important;
     scrollbar-width: thin !important;
 }
 
-.aco_expanded_latest_comment::-webkit-scrollbar-track
+.aco_scroller_text_small_3lines{
+    font-size: 0.7em;
+    line-height: 1.0em;
+    max-height: 3.0em;
+}
+
+.aco_scroller_text_small_4lines{
+    font-size: 0.7em;
+    line-height: 1.0em;
+    max-height: 4.0em;
+}
+
+.aco_scroller_text_small_5lines{
+    font-size: 0.7em;
+    line-height: 1.0em;
+    max-height: 5.0em;
+}
+
+.aco_scroller_text_medium_3lines{
+    font-size: 0.8em;
+    line-height: 1.1em;
+    max-height: 3.3em;
+}
+
+.aco_scroller_text_medium_4lines{
+    font-size: 0.8em;
+    line-height: 1.1em;
+    max-height: 4.4em;
+}
+
+.aco_scroller_text_medium_5lines{
+    font-size: 0.8em;
+    line-height: 1.1em;
+    max-height: 5.5em;
+}
+
+.aco_scroller_text_normal_3lines{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    max-height: 3.6em;
+}
+
+.aco_scroller_text_normal_4lines{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    max-height: 4.8em;
+}
+
+.aco_scroller_text_normal_5lines{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    max-height: 6.0em;
+}
+
+.aco_scroller_text::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #F5F5F5;
 }
 
-.aco_expanded_latest_comment::-webkit-scrollbar
+.aco_scroller_text::-webkit-scrollbar
 {
 	width: 6px;
 	background-color: #F5F5F5;
 }
 
-.aco_expanded_latest_comment::-webkit-scrollbar-thumb
+.aco_scroller_text::-webkit-scrollbar-thumb
 {
 	background-color: #555;
 }

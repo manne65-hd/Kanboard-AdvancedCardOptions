@@ -8,6 +8,10 @@ $ACO_push_due_days           = $this->helper->AdvancedCardOptionsHelper->getPush
 $ACO_remove_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
 $ACO_create_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
 $ACO_expanded_latest_comment = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
+$ACO_comment_scroller_maxlines = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_maxlines');
+$ACO_comment_scroller_textsize = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_textsize');
+// for now let's make sure only maxlines between 3 and 5 get accepted OTHERWISE default to 4! (Will be solved later by better CONFIG-page)
+$ACO_comment_scroller_maxlines = ($ACO_comment_scroller_maxlines > 2 && $ACO_comment_scroller_maxlines < 6) ? $ACO_comment_scroller_maxlines : 4;
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
 if ( array_sum($ACO_push_due_days) === 1 ){
@@ -32,8 +36,8 @@ if ( array_sum($ACO_push_due_days) === 1 ){
 <?php if ($ACO_expanded_latest_comment  && $task['nb_comments'] > 0): ?>
     <?php $ACO_latest_comment = $this->helper->AdvancedCardOptionsHelper->commentGetLatest($task['id']); ?>
     <?php $ACO_latest_comment_tooltip =  t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])); ?>
-    <div class="aco_expanded_latest_comment">
-        <span class="aco_comment_icon" title="<?= $ACO_latest_comment_tooltip ?>" role="img" aria-label="<?= $ACO_latest_comment_tooltip ?>">
+    <div id="aco_latest_comment_<?= $task['id'] ?>" class="aco_scroller_text aco_scroller_text_<?= $ACO_comment_scroller_textsize ?>_<?= $ACO_comment_scroller_maxlines ?>lines">
+        <span class="aco_scroller_icon" title="<?= $ACO_latest_comment_tooltip ?>" role="img" aria-label="<?= $ACO_latest_comment_tooltip ?>">
             <i class="fa fa-commenting" aria-></i></span><?= $this->helper->text->markdown($ACO_latest_comment['comment']) ?>
     </div>
 <?php endif ?>
