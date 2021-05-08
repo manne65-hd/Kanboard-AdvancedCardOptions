@@ -1,13 +1,18 @@
 <?php
 /*
+echo '<pre>';
+print_r($task);
+echo '</pre>';
+/*
  * TEMPLATE-OverRide  task_footer.php FORKED from Kanboard 1.2.18 --> MONITOR for changes in future releases !!
  */
 // Get the configuration for the project / task
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
-$ACO_push_due_days           = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
-$ACO_remove_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
-$ACO_create_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
-$ACO_expanded_latest_comment = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
+$ACO_push_due_days             = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+$ACO_remove_due_date           = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_create_due_date           = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
+$ACO_create_due_date_min_prio  = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date_min_prio');
+$ACO_expanded_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
 $ACO_comment_scroller_maxlines = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_maxlines');
 $ACO_comment_scroller_textsize = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_textsize');
 // for now let's make sure only maxlines between 3 and 5 get accepted OTHERWISE default to 4! (Will be solved later by better CONFIG-page)
@@ -137,7 +142,7 @@ if ( array_sum($ACO_push_due_days) === 1 ){
                     <?= $this->dt->datetime($task['date_due']) ?>
                 <?php endif ?>
             </span>
-        <?php elseif ($ACO_create_due_date && empty($task['date_due'])): ?>
+        <?php elseif ($ACO_create_due_date && empty($task['date_due']) && (intval($task['priority']) >= intval($ACO_create_due_date_min_prio))): ?>
             <i class="fa fa-calendar" role="img" title="<?= t('Set due date by clicking one of the "+buttons" ...') ?>" aria-label="<?= t('Set due date by clicking one of the "+buttons" ...') ?>"></i>
             <?= $this->render('AdvancedCardOptions:self/card/icons_create_due_date', array(
                 'task' => $task,

@@ -29,16 +29,17 @@ class AdvancedCardOptionsHelper extends TaskHelper
         'ACO_collapsed_tags' => 0,
         'ACO_collapsed_category' => 0,
         'ACO_expanded_latest_comment' => 0,
+        'ACO_comment_scroller_maxlines' => 4,
+        'ACO_comment_scroller_textsize' => 'medium',
         'ACO_push_due_days_1' => 0,
         'ACO_push_due_days_2' => 0,
         'ACO_push_due_days_3' => 0,
         'ACO_show_push_duebtn_dropdown' => 0,
         'ACO_remove_due_date' => 0,
         'ACO_create_due_date' => 0,
+        'ACO_create_due_date_min_prio' => 0,
         'ACO_create_due_time' => '00:00',
         'ACO_create_due_time_mode' => 'fixed',
-        'ACO_comment_scroller_maxlines' => 4,
-        'ACO_comment_scroller_textsize' => 'medium',
     );
 
 
