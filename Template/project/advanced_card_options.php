@@ -74,7 +74,7 @@
             <fieldset>
                 <legend><?= t('Create due date') ?></legend>
                     <?= $this->form->checkbox('ACO_create_due_date', t('Show buttons to create a due date(Will use the same intervals as configured above)'), 1, $values['ACO_create_due_date'] == 1) ?>
-                    <?= $this->form->label( t('Only show, if the task\'s priority is equal to or higher than ...'), 'ACO_create_due_date_min_prio') ?>
+                    <?= $this->form->label( t('Only show, if the task\'s priority is at least ...'), 'ACO_create_due_date_min_prio') ?>
                     <?= $this->form->number('ACO_create_due_date_min_prio', $values, $errors, array('autofocus', 'tabindex="4"')) ?>
                     <fieldset>
                         <legend><?= t('Time to be used for the new due date(relative to the moment, when setting it.)') ?></legend>
@@ -89,9 +89,9 @@
                             ),
                             $values
                         ) ?>
-                    </fieldset>
                     <?= $this->form->label( t('Fixed time of day(e.g.: 08:00)'), 'ACO_create_due_time') ?>
                     <?= $this->form->text('ACO_create_due_time', $values, $errors) ?>
+                </fieldset>
             </fieldset>
         </fieldset>
     </fieldset>
