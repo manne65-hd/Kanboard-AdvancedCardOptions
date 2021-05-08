@@ -202,7 +202,7 @@ if ( array_sum($ACO_push_due_days) === 1 ){
             <?php endif ?>
         <?php endif ?>
 
-        <?php if (! empty($task['description'])): ?>
+        <?php if (! empty($task['description']) && ! $ACO_expanded_description): ?>
             <?= $this->app->tooltipLink('<i class="fa fa-file-text-o"></i>', $this->url->href('BoardTooltipController', 'description', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
         <?php endif ?>
 
