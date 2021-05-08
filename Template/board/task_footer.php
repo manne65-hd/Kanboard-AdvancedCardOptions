@@ -1,9 +1,5 @@
 <?php
 /*
-echo '<pre>';
-print_r($task);
-echo '</pre>';
-/*
  * TEMPLATE-OverRide  task_footer.php FORKED from Kanboard 1.2.18 --> MONITOR for changes in future releases !!
  */
 // Get the configuration for the project / task
