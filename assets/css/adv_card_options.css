@@ -52,6 +52,11 @@
     scrollbar-width: thin !important;
 }
 
+.aco_scroller_description{
+    border: 1px solid !important;
+    margin-bottom: 2px;
+}
+
 .aco_scroller_text_small_3lines{
     font-size: 0.7em;
     line-height: 1.0em;

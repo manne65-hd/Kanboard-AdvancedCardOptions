@@ -8,15 +8,19 @@ echo '</pre>';
  */
 // Get the configuration for the project / task
 $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
-$ACO_push_due_days             = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
-$ACO_remove_due_date           = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
-$ACO_create_due_date           = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
-$ACO_create_due_date_min_prio  = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date_min_prio');
-$ACO_expanded_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
-$ACO_comment_scroller_maxlines = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_maxlines');
-$ACO_comment_scroller_textsize = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_textsize');
+$ACO_push_due_days              = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+$ACO_remove_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
+$ACO_create_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
+$ACO_create_due_date_min_prio   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date_min_prio');
+$ACO_expanded_description       = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_description');
+$ACO_descript_scroller_maxlines = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_descript_scroller_maxlines');
+$ACO_descript_scroller_textsize = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_descript_scroller_textsize');
+$ACO_expanded_latest_comment    = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
+$ACO_comment_scroller_maxlines  = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_maxlines');
+$ACO_comment_scroller_textsize  = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_textsize');
 // for now let's make sure only maxlines between 3 and 5 get accepted OTHERWISE default to 4! (Will be solved later by better CONFIG-page)
-$ACO_comment_scroller_maxlines = ($ACO_comment_scroller_maxlines > 2 && $ACO_comment_scroller_maxlines < 6) ? $ACO_comment_scroller_maxlines : 4;
+$ACO_descript_scroller_maxlines = ($ACO_descript_scroller_maxlines > 2 && $ACO_descript_scroller_maxlines < 6) ? $ACO_descript_scroller_maxlines : 4;
+$ACO_comment_scroller_maxlines  = ($ACO_comment_scroller_maxlines > 2 && $ACO_comment_scroller_maxlines < 6) ? $ACO_comment_scroller_maxlines : 3;
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
 if ( array_sum($ACO_push_due_days) === 1 ){
@@ -37,6 +41,11 @@ if ( array_sum($ACO_push_due_days) === 1 ){
 
 ?>
 
+<?php if ($ACO_expanded_description  && ! empty($task['description'])): ?>
+    <div id="aco_description_<?= $task['id'] ?>" class="aco_scroller_text aco_scroller_text_<?= $ACO_descript_scroller_textsize ?>_<?= $ACO_descript_scroller_maxlines ?>lines aco_scroller_description">
+        <span class="aco_scroller_icon"><i class="fa fa-file-text-o" aria-></i></span><?= $this->helper->text->markdown($task['description']) ?>
+    </div>
+<?php endif ?>
 
 <?php if ($ACO_expanded_latest_comment  && $task['nb_comments'] > 0): ?>
     <?php $ACO_latest_comment = $this->helper->AdvancedCardOptionsHelper->commentGetLatest($task['id']); ?>
