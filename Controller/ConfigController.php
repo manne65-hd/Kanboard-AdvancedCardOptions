@@ -5,7 +5,7 @@ namespace Kanboard\Plugin\AdvancedCardOptions\Controller;
 /**
  * Class ConfigController
  *
- * @package Kanboard\Plugin\Calendar\Controller
+ * @package Kanboard\Plugin\AdvancedCardOptions\Controller
  */
 class ConfigController extends \Kanboard\Controller\ConfigController
 {

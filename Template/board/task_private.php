@@ -2,7 +2,6 @@
 /*
  * TEMPLATE-OverRide  board:task_private.php FORKED from Kanboard 1.2.18 --> MONITOR for changes in future releases !!
  */
-
 /* I'll have to INJECT some ACO-parameters into the $task-ARRAY, in order
  * to pass them through to the attached dropdown-template!
  */

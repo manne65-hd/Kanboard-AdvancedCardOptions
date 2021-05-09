@@ -1,8 +1,3 @@
-<?php
-// Read the ACO configuration from the project
-//$ACO = $project['ACO_config'];
-
-?>
 <?php if ($ACO['push_due_days_1'] > 0) : ?>
     <?= $this->modal->confirmLink(
         '+' . $ACO['push_due_days_1'],

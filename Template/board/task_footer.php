@@ -3,10 +3,6 @@
  * TEMPLATE-OverRide  board:task_footer.php FORKED from Kanboard 1.2.18 --> MONITOR for changes in future releases !!
  */
 
-// for now let's make sure only maxlines between 3 and 5 get accepted OTHERWISE default to 4! (Will be solved later by better CONFIG-page)
-//$ACO['descript_scroller_maxlines'] = ($ACO['descript_scroller_maxlines'] > 2 && $ACO['descript_scroller_maxlines'] < 6) ? $ACO['descript_scroller_maxlines'] : 4;
-//$ACO['comment_scroller_maxlines']  = ($ACO['comment_scroller_maxlines'] > 2 && $ACO['comment_scroller_maxlines'] < 6) ? $ACO['comment_scroller_maxlines'] : 3;
-
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
 if ( $ACO['sum_push_due_days'] === 1 ){
     $ACO_show_duedate_icons = TRUE;
