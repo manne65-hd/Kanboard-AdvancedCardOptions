@@ -71,8 +71,25 @@ class AdvancedCardOptionsHelper extends TaskHelper
      */
     public function Initialize($project_id)
     {
+        $ACO = array();
+
         $this->project_id = $project_id;
-        $this->project_config_method = $this->projectMetadataModel->get($this->project_id, 'ACO_project_config_method', $this->ACO_defaults['ACO_project_config_method']);
+
+        foreach($this->ACO_defaults as $ACO_param => $ACO_default_value) {
+            if ($ACO_param === 'ACO_project_config_method') {
+                $this->project_config_method = $this->projectMetadataModel->get($project_id, 'ACO_project_config_method', $this->ACO_defaults['ACO_project_config_method']);
+                $ACO['project_config_method'] = $this->project_config_method;
+            } else {
+                $pure_param_name = substr($ACO_param,4);
+                $ACO[$pure_param_name] = $this->getParameter($ACO_param);
+            }
+        }
+        // let's add some more calculated parameters and/or reset invalid parameters to defaults
+        $ACO['sum_push_due_days'] = intval($ACO['push_due_days_1']) + intval($ACO['push_due_days_2']) + intval($ACO['push_due_days_3']);
+        $ACO['descript_scroller_maxlines'] = ($ACO['descript_scroller_maxlines'] > 2 && $ACO['descript_scroller_maxlines'] < 6) ? $ACO['descript_scroller_maxlines'] : 4;
+        $ACO['comment_scroller_maxlines']  = ($ACO['comment_scroller_maxlines'] > 2 && $ACO['comment_scroller_maxlines'] < 6) ? $ACO['comment_scroller_maxlines'] : 3;
+
+        return $ACO;
     }
 
     /**

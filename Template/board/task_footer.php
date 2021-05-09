@@ -1,52 +1,41 @@
 <?php
 /*
- * TEMPLATE-OverRide  task_footer.php FORKED from Kanboard 1.2.18 --> MONITOR for changes in future releases !!
+ * TEMPLATE-OverRide  board:task_footer.php FORKED from Kanboard 1.2.18 --> MONITOR for changes in future releases !!
  */
-// Get the configuration for the project / task
-$ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
-$ACO_push_due_days              = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
-$ACO_remove_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
-$ACO_create_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date');
-$ACO_create_due_date_min_prio   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_date_min_prio');
-$ACO_expanded_description       = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_description');
-$ACO_descript_scroller_maxlines = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_descript_scroller_maxlines');
-$ACO_descript_scroller_textsize = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_descript_scroller_textsize');
-$ACO_expanded_latest_comment    = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_expanded_latest_comment');
-$ACO_comment_scroller_maxlines  = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_maxlines');
-$ACO_comment_scroller_textsize  = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_comment_scroller_textsize');
+
 // for now let's make sure only maxlines between 3 and 5 get accepted OTHERWISE default to 4! (Will be solved later by better CONFIG-page)
-$ACO_descript_scroller_maxlines = ($ACO_descript_scroller_maxlines > 2 && $ACO_descript_scroller_maxlines < 6) ? $ACO_descript_scroller_maxlines : 4;
-$ACO_comment_scroller_maxlines  = ($ACO_comment_scroller_maxlines > 2 && $ACO_comment_scroller_maxlines < 6) ? $ACO_comment_scroller_maxlines : 3;
+//$ACO['descript_scroller_maxlines'] = ($ACO['descript_scroller_maxlines'] > 2 && $ACO['descript_scroller_maxlines'] < 6) ? $ACO['descript_scroller_maxlines'] : 4;
+//$ACO['comment_scroller_maxlines']  = ($ACO['comment_scroller_maxlines'] > 2 && $ACO['comment_scroller_maxlines'] < 6) ? $ACO['comment_scroller_maxlines'] : 3;
 
 // Figure out if we are supposed to display ANY icons related to pushing the due date (because these will be wrapped within STRONG square brackets)
-if ( array_sum($ACO_push_due_days) === 1 ){
+if ( $ACO['sum_push_due_days'] === 1 ){
     $ACO_show_duedate_icons = TRUE;
     $ACO_push_due_days_suffix = t('Day');
     $ACO_create_due_days_suffix = t('Day');
-    $ACO_push_due_days_suffix = ($ACO_remove_due_date) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
-} elseif ( array_sum($ACO_push_due_days) > 1 ) {
+    $ACO_push_due_days_suffix = ($ACO['remove_due_date']) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
+} elseif ( $ACO['sum_push_due_days'] > 1 ) {
     $ACO_show_duedate_icons = TRUE;
     $ACO_push_due_days_suffix = t('Day(s)');
     $ACO_create_due_days_suffix = t('Day(s)');
-    $ACO_push_due_days_suffix = ($ACO_remove_due_date) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
+    $ACO_push_due_days_suffix = ($ACO['remove_due_date']) ? $ACO_push_due_days_suffix . ' | ' : $ACO_push_due_days_suffix;
 } else {
-    $ACO_show_duedate_icons = ($ACO_remove_due_date) ? TRUE : FALSE;
+    $ACO_show_duedate_icons = ($ACO['remove_due_date']) ? TRUE : FALSE;
     $ACO_push_due_days_suffix = '';
     $ACO_create_due_days_suffix = '';
 }
 
 ?>
 
-<?php if ($ACO_expanded_description  && ! empty($task['description'])): ?>
-    <div id="aco_description_<?= $task['id'] ?>" class="aco_scroller_text aco_scroller_text_<?= $ACO_descript_scroller_textsize ?>_<?= $ACO_descript_scroller_maxlines ?>lines aco_scroller_description">
+<?php if ($ACO['expanded_description']  && ! empty($task['description'])): ?>
+    <div id="aco_description_<?= $task['id'] ?>" class="aco_scroller_text aco_scroller_text_<?= $ACO['descript_scroller_textsize'] ?>_<?= $ACO['descript_scroller_maxlines'] ?>lines aco_scroller_description">
         <span class="aco_scroller_icon"><i class="fa fa-file-text-o" aria-></i></span><?= $this->helper->text->markdown($task['description']) ?>
     </div>
 <?php endif ?>
 
-<?php if ($ACO_expanded_latest_comment  && $task['nb_comments'] > 0): ?>
+<?php if ($ACO['expanded_latest_comment']  && $task['nb_comments'] > 0): ?>
     <?php $ACO_latest_comment = $this->helper->AdvancedCardOptionsHelper->commentGetLatest($task['id']); ?>
     <?php $ACO_latest_comment_tooltip =  t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])); ?>
-    <div id="aco_latest_comment_<?= $task['id'] ?>" class="aco_scroller_text aco_scroller_text_<?= $ACO_comment_scroller_textsize ?>_<?= $ACO_comment_scroller_maxlines ?>lines">
+    <div id="aco_latest_comment_<?= $task['id'] ?>" class="aco_scroller_text aco_scroller_text_<?= $ACO['comment_scroller_textsize'] ?>_<?= $ACO['comment_scroller_maxlines'] ?>lines">
         <span class="aco_scroller_icon" title="<?= $ACO_latest_comment_tooltip ?>" role="img" aria-label="<?= $ACO_latest_comment_tooltip ?>">
             <i class="fa fa-commenting" aria-></i></span><?= $this->helper->text->markdown($ACO_latest_comment['comment']) ?>
     </div>
@@ -127,12 +116,14 @@ if ( array_sum($ACO_push_due_days) === 1 ){
                             <strong>[</strong>
                             <?= $this->render('AdvancedCardOptions:self/card/icons_push_due_date', array(
                                 'task' => $task,
+                                'ACO' => $ACO,
                                 'project' => $project,
                             )) ?>
                             <?= $ACO_push_due_days_suffix; ?>
-                            <?php if ($ACO_remove_due_date): ?>
+                            <?php if ($ACO['remove_due_date']): ?>
                                 <?= $this->render('AdvancedCardOptions:self/card/icon_remove_due_date', array(
                                     'task' => $task,
+                                    'ACO' => $ACO,
                                     'project' => $project,
                                 )) ?>
                             <?php endif ?>
@@ -147,10 +138,11 @@ if ( array_sum($ACO_push_due_days) === 1 ){
                     <?= $this->dt->datetime($task['date_due']) ?>
                 <?php endif ?>
             </span>
-        <?php elseif ($ACO_create_due_date && empty($task['date_due']) && (intval($task['priority']) >= intval($ACO_create_due_date_min_prio))): ?>
+        <?php elseif ($ACO['create_due_date'] && empty($task['date_due']) && (intval($task['priority']) >= intval($ACO['create_due_date_min_prio']))): ?>
             <i class="fa fa-calendar" role="img" title="<?= t('Set due date by clicking one of the "+buttons" ...') ?>" aria-label="<?= t('Set due date by clicking one of the "+buttons" ...') ?>"></i>
             <?= $this->render('AdvancedCardOptions:self/card/icons_create_due_date', array(
                 'task' => $task,
+                'ACO' => $ACO,
                 'project' => $project,
             )) ?>
             <?= $ACO_create_due_days_suffix; ?>
@@ -198,7 +190,7 @@ if ( array_sum($ACO_push_due_days) === 1 ){
             <?php endif ?>
         <?php endif ?>
 
-        <?php if (! empty($task['description']) && ! $ACO_expanded_description): ?>
+        <?php if (! empty($task['description']) && ! $ACO['expanded_description']): ?>
             <?= $this->app->tooltipLink('<i class="fa fa-file-text-o"></i>', $this->url->href('BoardTooltipController', 'description', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
         <?php endif ?>
 

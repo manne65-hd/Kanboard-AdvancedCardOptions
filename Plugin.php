@@ -11,6 +11,8 @@ class Plugin extends Base
     public function initialize()
     {
         // Template OVERRIDES ...
+        $this->template->setTemplateOverride('board/table_container', 'AdvancedCardOptions:board/table_container');
+        $this->template->setTemplateOverride('board/table_tasks', 'AdvancedCardOptions:board/table_tasks');
         $this->template->setTemplateOverride('board/task_footer', 'AdvancedCardOptions:board/task_footer');
         $this->template->setTemplateOverride('board/task_private', 'AdvancedCardOptions:board/task_private');
 

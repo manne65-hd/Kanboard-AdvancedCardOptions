@@ -1,49 +1,48 @@
 <?php
-// Get the configuration for the project / task
-$ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
-$ACO_push_due_days = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
+// Read the ACO configuration from the project
+//$ACO = $project['ACO_config'];
 
 ?>
-<?php if ($ACO_push_due_days[1] > 0) : ?>
+<?php if ($ACO['push_due_days_1'] > 0) : ?>
     <?= $this->modal->confirmLink(
-        '+' . $ACO_push_due_days[1],
+        '+' . $ACO['push_due_days_1'],
         'AdvancedCardOptionsController',
         'createDueDate',
         array(
                 'plugin' => 'AdvancedCardOptions',
                 'task_id' => $task['id'],
                 'project_id' => $task['project_id'],
-                'push_days' => $ACO_push_due_days[1],
+                'push_days' => $ACO['push_due_days_1'],
             )
         )
     ?>
 <?php endif ?>
 
-<?php if ($ACO_push_due_days[2] > 0) : ?>
+<?php if ($ACO['push_due_days_2'] > 0) : ?>
     <?= $this->modal->confirmLink(
-        '+' . $ACO_push_due_days[2],
+        '+' . $ACO['push_due_days_2'],
         'AdvancedCardOptionsController',
         'createDueDate',
         array(
                 'plugin' => 'AdvancedCardOptions',
                 'task_id' => $task['id'],
                 'project_id' => $task['project_id'],
-                'push_days' => $ACO_push_due_days[2],
+                'push_days' => $ACO['push_due_days_2'],
             )
         )
     ?>
 <?php endif ?>
 
-<?php if ($ACO_push_due_days[3] > 0) : ?>
+<?php if ($ACO['push_due_days_3'] > 0) : ?>
     <?= $this->modal->confirmLink(
-        '+' . $ACO_push_due_days[3],
+        '+' . $ACO['push_due_days_3'],
         'AdvancedCardOptionsController',
         'createDueDate',
         array(
                 'plugin' => 'AdvancedCardOptions',
                 'task_id' => $task['id'],
                 'project_id' => $task['project_id'],
-                'push_days' => $ACO_push_due_days[3],
+                'push_days' => $ACO['push_due_days_3'],
             )
         )
     ?>
