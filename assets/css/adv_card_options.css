@@ -75,6 +75,25 @@
     max-height: 5.0em;
 }
 
+.aco_scroller_text_small_6lines{
+    font-size: 0.7em;
+    line-height: 1.0em;
+    max-height: 6.0em;
+}
+
+.aco_scroller_text_small_7lines{
+    font-size: 0.7em;
+    line-height: 1.0em;
+    max-height: 7.0em;
+}
+
+.aco_scroller_text_small_8lines{
+    font-size: 0.7em;
+    line-height: 1.0em;
+    max-height: 8.0em;
+}
+
+
 .aco_scroller_text_medium_3lines{
     font-size: 0.8em;
     line-height: 1.1em;
@@ -93,6 +112,25 @@
     max-height: 5.5em;
 }
 
+.aco_scroller_text_medium_6lines{
+    font-size: 0.8em;
+    line-height: 1.1em;
+    max-height: 6.6em;
+}
+
+.aco_scroller_text_medium_7lines{
+    font-size: 0.8em;
+    line-height: 1.1em;
+    max-height: 7.7em;
+}
+
+.aco_scroller_text_medium_8lines{
+    font-size: 0.8em;
+    line-height: 1.1em;
+    max-height: 8.8em;
+}
+
+
 .aco_scroller_text_normal_3lines{
     font-size: 0.9em;
     line-height: 1.2em;
@@ -109,6 +147,24 @@
     font-size: 0.9em;
     line-height: 1.2em;
     max-height: 6.0em;
+}
+
+.aco_scroller_text_normal_6lines{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    max-height: 7.2em;
+}
+
+.aco_scroller_text_normal_7lines{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    max-height: 8.4em;
+}
+
+.aco_scroller_text_normal_8lines{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    max-height: 9.6em;
 }
 
 .aco_scroller_text::-webkit-scrollbar-track

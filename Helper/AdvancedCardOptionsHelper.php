@@ -88,8 +88,8 @@ class AdvancedCardOptionsHelper extends TaskHelper
         }
         // let's add some more calculated parameters and/or reset invalid parameters to defaults
         $ACO['sum_push_due_days'] = intval($ACO['push_due_days_1']) + intval($ACO['push_due_days_2']) + intval($ACO['push_due_days_3']);
-        $ACO['descript_scroller_maxlines'] = ($ACO['descript_scroller_maxlines'] > 2 && $ACO['descript_scroller_maxlines'] < 6) ? $ACO['descript_scroller_maxlines'] : 4;
-        $ACO['comment_scroller_maxlines']  = ($ACO['comment_scroller_maxlines'] > 2 && $ACO['comment_scroller_maxlines'] < 6) ? $ACO['comment_scroller_maxlines'] : 3;
+        $ACO['descript_scroller_maxlines'] = ($ACO['descript_scroller_maxlines'] > 2 && $ACO['descript_scroller_maxlines'] < 9) ? $ACO['descript_scroller_maxlines'] : 4;
+        $ACO['comment_scroller_maxlines']  = ($ACO['comment_scroller_maxlines'] > 2 && $ACO['comment_scroller_maxlines'] < 9) ? $ACO['comment_scroller_maxlines'] : 3;
 
         return $ACO;
     }
