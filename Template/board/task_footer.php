@@ -30,7 +30,7 @@ if ( $ACO['sum_push_due_days'] === 1 ){
 
 <?php if ($ACO['expanded_latest_comment']  && $task['nb_comments'] > 0): ?>
     <?php $ACO_latest_comment = $this->helper->AdvancedCardOptionsHelper->commentGetLatest($task['id']); ?>
-    <?php $ACO_latest_comment_tooltip =  t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])); ?>
+    <?php $ACO_latest_comment_tooltip =  t('%s commented on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])); ?>
     <div id="aco_latest_comment_<?= $task['id'] ?>" class="aco_scroller_text aco_scroller_text_<?= $ACO['comment_scroller_textsize'] ?>_<?= $ACO['comment_scroller_maxlines'] ?>lines">
         <span class="aco_scroller_icon" title="<?= $ACO_latest_comment_tooltip ?>" role="img" aria-label="<?= $ACO_latest_comment_tooltip ?>">
             <i class="fa fa-commenting" aria-></i></span><?= $this->helper->text->markdown($ACO_latest_comment['comment']) ?>

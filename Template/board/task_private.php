@@ -52,11 +52,11 @@ $task['ACO'] = array(
             <?php if ($ACO['collapsed_latest_comment']  && $task['nb_comments'] > 0): ?>
                 <?php
                     $ACO_latest_comment = $this->helper->AdvancedCardOptionsHelper->commentGetLatest($task['id']);
-                    $ACO_latest_comment_tooltip = '####' . t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])) . PHP_EOL;
-                    $ACO_latest_comment_tooltip .= '--------------------' . PHP_EOL;
+                    $ACO_latest_comment_tooltip = '***' . t('%s commented on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])) . '***' . PHP_EOL;
+                    $ACO_latest_comment_tooltip .= PHP_EOL . '--------------------' . PHP_EOL;
                     $ACO_latest_comment_tooltip .= $ACO_latest_comment['comment'];
                 ?>
-                    <i class="fa fa-commenting" title="<?= $ACO_latest_comment_tooltip ?>" aria-label="<?= $ACO_latest_comment_tooltip ?>"></i>
+                    <?= $this->app->tooltipMarkdown($ACO_latest_comment_tooltip, 'fa fa-commenting') ?>
             <?php elseif ($ACO['collapsed_latest_comment']  && $task['nb_comments'] === '0'): ?>
                     <span class="aco_dimmed"><i class="fa fa-comment"></i></span>
             <?php endif ?>
