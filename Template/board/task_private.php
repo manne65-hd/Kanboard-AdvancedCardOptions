@@ -137,6 +137,15 @@ $task['ACO'] = array(
                     <strong><?= '#'.$task['id'] ?></strong>
                 <?php endif ?>
 
+                <?php if (!empty($task['description'])): ?>
+                    <span class="acoToggleTextbox" aco_div_id="aco_description_<?= $task['id'] ?>"><i class="fa fa-file-text-o"></i></span>
+                <?php endif ?>
+
+                <?php if ($task['nb_comments'] > 0): ?>
+                    <span class="acoToggleTextbox" aco_div_id="aco_latest_comment_<?= $task['id'] ?>"><i class="fa fa-commenting"></i></span>
+                <?php endif ?>
+
+
                 <?php if (! empty($task['owner_id'])): ?>
                     <span class="task-board-assignee">
                         <?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>
