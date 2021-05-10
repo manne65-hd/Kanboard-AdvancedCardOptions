@@ -88,8 +88,58 @@ class AdvancedCardOptionsController extends BaseController
 	$project = $this->getProject();
 	$task = $this->getTask();
 
-    // Calculate the date + time of the requested pushed due date
-    $pushed_date_due = $this->helper->AdvancedCardOptionsHelper->getPushedDateDue(time(), $_REQUEST['push_days']);
+
+    // Calculate the date + time of the requested newly created pushed due date
+    $ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
+    $ACO_create_due_time_mode = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_time_mode');
+    if ($ACO_create_due_time_mode === 'fixed') {
+        $ACO_create_due_time = strtotime('today ' . $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_create_due_time'));
+    } else {
+        switch ($ACO_create_due_time_mode) {
+            case 'round-down_15':
+                $ACO_round_precision = 60 * 15;
+                $ACO_round_mode = 'floor';
+                break;
+
+            case 'round-down_30':
+                $ACO_round_precision = 60 * 30;
+                $ACO_round_mode = 'floor';
+                break;
+
+            case 'round-down_60':
+                $ACO_round_precision = 60 * 60;
+                $ACO_round_mode = 'floor';
+                break;
+
+            case 'round-up_15':
+                $ACO_round_precision = 60 * 15;
+                $ACO_round_mode = 'ceil';
+                break;
+
+            case 'round-up_30':
+                $ACO_round_precision = 60 * 30;
+                $ACO_round_mode = 'ceil';
+                break;
+
+            case 'round-up_60':
+                $ACO_round_precision = 60 * 60;
+                $ACO_round_mode = 'ceil';
+                break;
+
+            default:
+                $ACO_round_precision = 60 * 60;
+                $ACO_round_mode = 'floor';
+                break;
+        }
+
+        if ($ACO_round_mode === 'floor') {
+            $ACO_create_due_time = floor(time() / $ACO_round_precision) * $ACO_round_precision;
+        } else {
+            $ACO_create_due_time = ceil(time() / $ACO_round_precision) * $ACO_round_precision;
+        }
+    }
+
+    $pushed_date_due = $this->helper->AdvancedCardOptionsHelper->getPushedDateDue($ACO_create_due_time, $_REQUEST['push_days']);
     $task['confirm_pushed_date_due'] = $pushed_date_due['formatted'];
 
 	if ($this->request->getStringParam('confirmation') === 'yes') {

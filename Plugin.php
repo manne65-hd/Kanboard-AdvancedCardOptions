@@ -4,7 +4,6 @@ namespace Kanboard\Plugin\AdvancedCardOptions;
 
 use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
-use Kanboard\Plugin\AdvancedCardOptions\Model\CommentModel;
 
 
 class Plugin extends Base
@@ -12,6 +11,8 @@ class Plugin extends Base
     public function initialize()
     {
         // Template OVERRIDES ...
+        $this->template->setTemplateOverride('board/table_container', 'AdvancedCardOptions:board/table_container');
+        $this->template->setTemplateOverride('board/table_tasks', 'AdvancedCardOptions:board/table_tasks');
         $this->template->setTemplateOverride('board/task_footer', 'AdvancedCardOptions:board/task_footer');
         $this->template->setTemplateOverride('board/task_private', 'AdvancedCardOptions:board/task_private');
 
@@ -24,12 +25,6 @@ class Plugin extends Base
         //Helpers
         $this->helper->register('AdvancedCardOptionsHelper', '\Kanboard\Plugin\AdvancedCardOptions\Helper\AdvancedCardOptionsHelper');
 
-        // Models
-        $this->container['commentModel'] = $this->container->factory(function ($c) {
-            return new CommentModel($c);
-        });
-
-
         //CSS
         $this->hook->on('template:layout:css', array('template' => 'plugins/AdvancedCardOptions/Assets/css/adv_card_options.css'));
     }
@@ -37,6 +32,15 @@ class Plugin extends Base
     public function onStartup() {
         // load Translation
         Translator::load($this->languageModel->getCurrentLanguage(), __DIR__ . '/Locale');
+    }
+
+    public function getClasses()
+    {
+        return array(
+            'Plugin\AdvancedCardOptions\Model' => array(
+                'AcoCommentModel',
+            )
+        );
     }
 
     public function getPluginName()
@@ -56,7 +60,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '0.3.2';
+        return '0.4.0';
     }
 
     public function getPluginHomepage()

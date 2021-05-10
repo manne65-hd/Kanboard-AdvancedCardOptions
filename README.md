@@ -11,39 +11,48 @@ Allows advanced control over the appearance _(and options)_ of the task-cards in
 - Allow to view the latest comment as a mouseover-tooltip in collapsed view.
 - Allow to indicate due-today or overdue in collapsed view.
 - Allow to display tags and/or category in collapsed view.
-- Allow to view the latest comment in expanded view
+- Allow to display task-description and/or latest comment in separate textboxes in expanded view.
+  - Select more options for each of the 2 textboxes.
+    - Define size of text. _(Small, Medium, Normal)_
+    - Define max. number of lines before scrollbars appear.
 - Add up to 3 buttons to push the due date of the task.
-- Add up to 3 links in the task-dropdown-menu to push the due date
+- Add up to 3 links in the task-dropdown-menu to push the due date.
 - Add a button to remove the due date of the task.
 - Add up to 3 buttons to set the due date of the task.
-- Default-preferences for all boards can be set via the "Advanced Card options" in the ADMIN-control-panel
-- ONLY project-managers/admins can override these default-preferences via the "Advanced Card options"-panel on a per-project base
-- includes german translation
-  - Currently incomplete!
+  - Option to set minimum task-priority for these buttons to appear.
+  - Select more options for the time of day for the newly pushed due date.
+    - Round up or down to next/last quarter, half or full hour.
+    - Set a fixed time of day. _(e.g. 08:00)_
+- Default-preferences for all project-boards can be set via the "Advanced Card options" in the ADMIN-control-panel.
+- ONLY project-managers/admins can override these default-preferences via the "Advanced Card options"-panel on a per-project base.
+- includes german translation.
 
 
 Screenshots
 -----------
 
-#### Placeholder
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+#### Board (expanded) view
 
-![TEMPLATE-KanboardScreenshot](https://user-images.githubusercontent.com/48651533/115109569-dc8b3500-9f76-11eb-98c6-341d3cc56df9.png)
+![01-Tasks-Expanded](https://user-images.githubusercontent.com/48651533/117608167-ce879900-b15d-11eb-9439-c33088cabbaf.png)
+
+#### Board (collapsed) view
+![01-Tasks-Collapsed](https://user-images.githubusercontent.com/48651533/117608144-c2034080-b15d-11eb-9e61-ae6f539911fe.png)
+
+
 
 
 
 ToDo ...
 --------
-- [ ] Improve LatestComment-tooltip _(collapsed card-view)_ to display as a "Kanboard-tooltip" with rendered Markdown
-- [ ] Add options to control time _(hh:mm)_ of newly set due date
+- [x] Improve LatestComment-tooltip _(collapsed card-view)_ to display as a "Kanboard-tooltip" with rendered Markdown
+- [x] Add options to control time _(hh:mm)_ of newly set due date
 - [x] Update german translations
-- [ ] Add screenshots to provide previews of the functionality in README.md
+- [x] Add screenshots to provide previews of the functionality in README.md
 
 Planned _(new)_ features
 --------
-- [ ] Add an option to display task-description in expanded card-view (as in latest comment-feature)
-- [ ] Add more options _(text-size, max-lines)_ for displaying latest comment _(and description)_ in expanded card-view
-- [ ] Add an option to use the "condensed view" of tags + category in expanded card-view
+- [ ] Add ability to toggle visibility of textboxes for description and/or latest-comment in expanded card-view.
+- [ ] Add an option to use the "condensed view" of tags + category in expanded card-view.
 
 Credits
 -------

@@ -1,3 +1,19 @@
+Version 0.4.0 (May 10, 2021)
+-------------------------------
+* fixed bug where latest-comment-icon was not displayed in inactive state(no comments)
+* Added missing suffix Day/Day(s) to "create due date buttons"
+* Made category-pill float right and on the first line along with tag-pills
+* Added options for the due-time of newly created due-dates
+* Added option to set minimum task-priority for the option to "show buttons to create a due date"
+* Added option to display task-description in expanded card-view
+* Added more options(max. Lines / TextSize) to the textboxes for task-description and latest comment
+* Updated german translations / Updated all other "prepared" languages
+* INTERNAL:
+  * Instead of replacing CommentModel to add the getLatest-method ... EXTENDED CommentModel with AcoCommentModel
+  * Added REMARKS to remember where the template-overrides where FORKED, to monitor for future changes
+  * reWrote handling of ACO-configuration(hoping to heavily reduce the time to render the board)
+    * Tested on a board with 50 tasks ... render-time reduced by ~ 50% :-)
+
 Version 0.3.2 (May 4, 2021)
 -------------------------------
 * minor changes to english language
@@ -6,7 +22,7 @@ Version 0.3.2 (May 4, 2021)
 
 Version 0.3.1 (May 2, 2021)
 -------------------------------
-* Add up to 3 buttons to set the due date of the task in expanded card-view
+* Added up to 3 buttons to set the due date of the task in expanded card-view
 * Enabled "condensed" display of tags and category in collapsed card-view
 * Added a nice scrollbar to latest comment in expanded card-view
 * Fixed error, where "inactive" latest-comment-icon appeared, although not configured to do so

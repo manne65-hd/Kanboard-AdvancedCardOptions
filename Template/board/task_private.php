@@ -1,15 +1,17 @@
 <?php
-// Get the configuration for the project / task
-$ACO_initialize = $this->helper->AdvancedCardOptionsHelper->Initialize($project['id']);
-$ACO_push_due_days              = $this->helper->AdvancedCardOptionsHelper->getPushDueDays();
-$ACO_remove_due_date            = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_remove_due_date');
-$ACO_collapsed_hide_edit        = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_hide_edit');
-$ACO_collapsed_description      = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_description');
-$ACO_collapsed_latest_comment   = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_latest_comment');
-$ACO_collapsed_due_date         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_due_date');
-$ACO_collapsed_tags             = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_tags');
-$ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getParameter('ACO_collapsed_category');
-
+/*
+ * TEMPLATE-OverRide  board:task_private.php FORKED from Kanboard 1.2.18 --> MONITOR for changes in future releases !!
+ */
+/* I'll have to INJECT some ACO-parameters into the $task-ARRAY, in order
+ * to pass them through to the attached dropdown-template!
+ */
+$task['ACO'] = array(
+    'push_due_days_1' => $ACO['push_due_days_1'],
+    'push_due_days_2' => $ACO['push_due_days_2'],
+    'push_due_days_3' => $ACO['push_due_days_3'],
+    'sum_push_due_days' => $ACO['sum_push_due_days'],
+    'show_push_duebtn_dropdown' => $ACO['show_push_duebtn_dropdown'],
+    );
 ?>
 <div class="
         task-board
@@ -31,15 +33,15 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
         <div class="task-board-collapsed">
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse"></i></div>
             <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
-                <?= $this->render('task/dropdown', array('task' => $task, 'redirect' => 'board')) ?>
-                <?php if ($this->projectRole->canUpdateTask($task) && ! $ACO_collapsed_hide_edit): ?>
+                <?= $this->render('task/dropdown', array('task' => $task, 'ACO' => $ACO, 'redirect' => 'board')) ?>
+                <?php if ($this->projectRole->canUpdateTask($task) && ! $ACO['collapsed_hide_edit']): ?>
                     <?= $this->modal->large('edit', '', 'TaskModificationController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
                 <?php endif ?>
             <?php else: ?>
                 <strong><?= '#'.$task['id'] ?></strong>
             <?php endif ?>
 
-            <?php if ($ACO_collapsed_description): ?>
+            <?php if ($ACO['collapsed_description']): ?>
                 <?php if (! empty($task['description'])): ?>
                     <?= $this->app->tooltipLink('<i class="fa fa-file-text-o"></i>', $this->url->href('BoardTooltipController', 'description', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
                 <?php elseif (empty($task['description'])): ?>
@@ -47,19 +49,19 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
                 <?php endif ?>
             <?php endif ?>
 
-            <?php if ($ACO_collapsed_latest_comment  && $task['nb_comments'] > 0): ?>
+            <?php if ($ACO['collapsed_latest_comment']  && $task['nb_comments'] > 0): ?>
                 <?php
-                    $ACO_latest_comment = $this->task->commentModel->getLatest($task['id']);
-                    $ACO_latest_comment_tooltip = '####' . t('%s on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])) . PHP_EOL;
-                    $ACO_latest_comment_tooltip .= '--------------------' . PHP_EOL;
+                    $ACO_latest_comment = $this->helper->AdvancedCardOptionsHelper->commentGetLatest($task['id']);
+                    $ACO_latest_comment_tooltip = '***' . t('%s commented on %s',$ACO_latest_comment['name'], $this->dt->datetime($ACO_latest_comment['date_modification'])) . '***' . PHP_EOL;
+                    $ACO_latest_comment_tooltip .= PHP_EOL . '--------------------' . PHP_EOL;
                     $ACO_latest_comment_tooltip .= $ACO_latest_comment['comment'];
                 ?>
-                    <i class="fa fa-commenting" title="<?= $ACO_latest_comment_tooltip ?>" aria-label="<?= $ACO_latest_comment_tooltip ?>"></i>
-            <?php elseif ($ACO_collapsed_latest_comment  && $task['nb_comments'] === 0): ?>
+                    <?= $this->app->tooltipMarkdown($ACO_latest_comment_tooltip, 'fa fa-commenting') ?>
+            <?php elseif ($ACO['collapsed_latest_comment']  && $task['nb_comments'] === '0'): ?>
                     <span class="aco_dimmed"><i class="fa fa-comment"></i></span>
             <?php endif ?>
 
-            <?php if ($ACO_collapsed_due_date && ! empty($task['date_due'])): ?>
+            <?php if ($ACO['collapsed_due_date'] && ! empty($task['date_due'])): ?>
                 <?php $aco_overdue = t('Due Date was') . ': ' . $this->dt->datetime($task['date_due']) ?>
                 <?php $aco_duetoday = t('Due today at') . ': ' . $this->dt->time($task['date_due']) ?>
 
@@ -84,18 +86,12 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
             <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', $this->text->e($task['title'])) ?>
         </div>
 
-        <?php if ($ACO_collapsed_tags && ! empty($task['tags']) || ($ACO_collapsed_category && ! empty($task['category_id']))): ?>
+        <?php if ($ACO['collapsed_tags'] && ! empty($task['tags']) || ($ACO['collapsed_category'] && ! empty($task['category_id']))): ?>
             <div class="aco_collapsed_tags_category">
                 <div class="task-tags">
                     <ul>
         <?php endif ?>
-            <?php if ($ACO_collapsed_tags && ! empty($task['tags'])): ?>
-                    <?php foreach ($task['tags'] as $tag): ?>
-                        <li class="task-tag <?= $tag['color_id'] ? "color-{$tag['color_id']}" : '' ?>"><?= $this->text->e($tag['name']) ?></li>
-                    <?php endforeach ?>
-            <?php endif ?>
-
-            <?php if ($ACO_collapsed_category && ! empty($task['category_id'])): ?>
+            <?php if ($ACO['collapsed_category'] && ! empty($task['category_id'])): ?>
                 <li class="aco_category_pill task-tag <?= $task['category_color_id'] ? "color-{$task['category_color_id']}" : '' ?>">
                     <i class="fa fa-folder-open" role="img" title="<?= t('Category ... ') ?>" aria-label="<?= t('Category ... ') ?>"></i>
                     <?php if ($not_editable): ?>
@@ -116,7 +112,14 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
                     <?php endif ?>
                 </li>
             <?php endif ?>
-        <?php if ($ACO_collapsed_tags && ! empty($task['tags']) || ($ACO_collapsed_category && ! empty($task['category_id']))): ?>
+
+            <?php if ($ACO['collapsed_tags'] && ! empty($task['tags'])): ?>
+                    <?php foreach ($task['tags'] as $tag): ?>
+                        <li class="task-tag <?= $tag['color_id'] ? "color-{$tag['color_id']}" : '' ?>"><?= $this->text->e($tag['name']) ?></li>
+                    <?php endforeach ?>
+            <?php endif ?>
+
+        <?php if ($ACO['collapsed_tags'] && ! empty($task['tags']) || ($ACO['collapsed_category'] && ! empty($task['category_id']))): ?>
                     </ul>
                 </div>
             </div>
@@ -126,7 +129,7 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse fa-2x"></i></div>
             <div class="task-board-header">
                 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
-                    <?= $this->render('task/dropdown', array('task' => $task, 'redirect' => 'board')) ?>
+                    <?= $this->render('task/dropdown', array('task' => $task, 'ACO' => $ACO, 'redirect' => 'board')) ?>
                     <?php if ($this->projectRole->canUpdateTask($task)): ?>
                         <?= $this->modal->large('edit', '', 'TaskModificationController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
                     <?php endif ?>
@@ -151,6 +154,7 @@ $ACO_collapsed_category         = $this->helper->AdvancedCardOptionsHelper->getP
 
             <?= $this->render('board/task_footer', array(
                 'task' => $task,
+                'ACO' => $ACO,
                 'not_editable' => $not_editable,
                 'project' => $project,
             )) ?>
