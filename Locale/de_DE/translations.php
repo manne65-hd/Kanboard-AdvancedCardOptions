@@ -10,7 +10,7 @@ return array(
     'The due date has been set successfully' => 'Das Fälligkeitsdatum wurde erfolgreich festgelegt',
     'Error while trying to set the due date of this task' => 'Fehler beim Versuch das Fälligkeitsdatum festzulegen',
     'Day' => 'Tag',
-    '%s on %s' => '%s am %s',
+    '%s commented on %s' => '%s kommentierte am %s',
     'Set due date by clicking one of the "+buttons" ...' => 'Fälligkeitsdatum durch klicken auf eine der "+-Schaltfächen" festlegen ...',
     'Due Date was' => 'war fällig am',
     'Due today at' => 'Fällig heute um',

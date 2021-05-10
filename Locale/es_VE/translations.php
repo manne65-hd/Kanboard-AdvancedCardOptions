@@ -10,7 +10,7 @@ return array(
     // 'The due date has been set successfully' => '',
     // 'Error while trying to set the due date of this task' => '',
     // 'Day' => '',
-    // '%s on %s' => '',
+    // '%s commented on %s' => '',
     // 'Set due date by clicking one of the "+buttons" ...' => '',
     // 'Due Date was' => '',
     // 'Due today at' => '',
