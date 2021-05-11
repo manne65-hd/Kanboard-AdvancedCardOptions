@@ -1,3 +1,7 @@
+Version 0.4.2 (May ?, 2021)
+-------------------------------
+* Added options to dynamically show/hide task-description and/or latest comment in expanded view via right-click on an according icon in the card's header
+
 Version 0.4.0 (May 10, 2021)
 -------------------------------
 * fixed bug where latest-comment-icon was not displayed in inactive state(no comments)
