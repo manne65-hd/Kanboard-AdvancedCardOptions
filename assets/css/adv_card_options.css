@@ -28,11 +28,16 @@
 }
 
 
+.acoToggleTextbox {
+    opacity: 0.5;
+}
+
 .aco_scroller_icon{
     padding-right: 5px;
     margin-bottom: 0px;
     float:left;
 }
+
 .aco_scroller_text{
     display: block;
     text-overflow: ellipsis !important;

@@ -138,11 +138,27 @@ $task['ACO'] = array(
                 <?php endif ?>
 
                 <?php if (!empty($task['description'])): ?>
-                    <span class="acoToggleTextbox" aco_div_id="aco_description_<?= $task['id'] ?>"><i class="fa fa-file-text-o"></i></span>
+                    <span id="aco_icon_description_<?= $task['id'] ?>"
+                        title="<?= t('Right-click to hide task-description') ?>"
+                        title_show = "<?= t('Right-click to show task-description') ?>"
+                        title_hide = "<?= t('Right-click to hide task-description') ?>"
+                        class="acoToggleTextbox"
+                        toggle_type="description_"
+                        toggle_id="<?= $task['id'] ?>">
+                            <i class="fa fa-file-text-o"></i>
+                    </span>
                 <?php endif ?>
 
                 <?php if ($task['nb_comments'] > 0): ?>
-                    <span class="acoToggleTextbox" aco_div_id="aco_latest_comment_<?= $task['id'] ?>"><i class="fa fa-commenting"></i></span>
+                    <span id="aco_icon_latest_comment_<?= $task['id'] ?>"
+                        title="<?= t('Right-click to hide latest comment') ?>"
+                        title_show = "<?= t('Right-click to show latest comment') ?>"
+                        title_hide = "<?= t('Right-click to hide latest comment') ?>"
+                        class="acoToggleTextbox"
+                        toggle_type="latest_comment_"
+                        toggle_id="<?= $task['id'] ?>">
+                            <i class="fa fa-commenting"></i>
+                    </span>
                 <?php endif ?>
 
 
