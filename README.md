@@ -52,7 +52,7 @@ ToDo ...
 
 Planned _(new)_ features
 --------
-- [ ] Add ability to toggle visibility of textboxes for description and/or latest-comment in expanded card-view.
+- [x] Add ability to toggle visibility of textboxes for description and/or latest-comment in expanded card-view.
 - [ ] Add an option to use the "condensed view" of tags + category in expanded card-view.
 
 Credits
