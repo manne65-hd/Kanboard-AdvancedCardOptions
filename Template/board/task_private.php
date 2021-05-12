@@ -142,7 +142,7 @@ $task['ACO'] = array(
                         title="<?= t('Right-click to hide task-description') ?>"
                         title_show = "<?= t('Right-click to show task-description') ?>"
                         title_hide = "<?= t('Right-click to hide task-description') ?>"
-                        class="acoToggleTextbox"
+                        class="aco_ToggleIcon_Textbox"
                         toggle_type="description_"
                         toggle_id="<?= $task['id'] ?>">
                             <i class="fa fa-file-text-o"></i>
@@ -154,7 +154,7 @@ $task['ACO'] = array(
                         title="<?= t('Right-click to hide latest comment') ?>"
                         title_show = "<?= t('Right-click to show latest comment') ?>"
                         title_hide = "<?= t('Right-click to hide latest comment') ?>"
-                        class="acoToggleTextbox"
+                        class="aco_ToggleIcon_Textbox"
                         toggle_type="latest_comment_"
                         toggle_id="<?= $task['id'] ?>">
                             <i class="fa fa-commenting"></i>

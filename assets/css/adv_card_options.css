@@ -28,8 +28,8 @@
 }
 
 
-.acoToggleTextbox {
-    opacity: 0.5;
+.aco_ToggleIcon_Textbox {
+    opacity: 1.0;
 }
 
 .aco_scroller_icon{
@@ -39,7 +39,7 @@
 }
 
 .aco_scroller_text{
-    display: block;
+    display: none;
     text-overflow: ellipsis !important;
     word-wrap:normal;
     overflow-y: auto;
