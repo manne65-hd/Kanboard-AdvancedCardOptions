@@ -137,7 +137,7 @@ $task['ACO'] = array(
                     <strong><?= '#'.$task['id'] ?></strong>
                 <?php endif ?>
 
-                <?php if (!empty($task['description'])): ?>
+                <?php if ($ACO['expanded_description'] && !empty($task['description'])): ?>
                     <span id="aco_icon_description_<?= $task['id'] ?>"
                         title="<?= t('Right-click to hide task-description') ?>"
                         title_show = "<?= t('Right-click to show task-description') ?>"
@@ -149,7 +149,7 @@ $task['ACO'] = array(
                     </span>
                 <?php endif ?>
 
-                <?php if ($task['nb_comments'] > 0): ?>
+                <?php if ($ACO['expanded_latest_comment'] && $task['nb_comments'] > 0): ?>
                     <span id="aco_icon_latest_comment_<?= $task['id'] ?>"
                         title="<?= t('Right-click to hide latest comment') ?>"
                         title_show = "<?= t('Right-click to show latest comment') ?>"
