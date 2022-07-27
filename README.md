@@ -70,7 +70,7 @@ Author
 Requirements
 ------------
 
-- Kanboard >= 1.2.18
+- Kanboard >= 1.2.20
 
 Installation
 ------------

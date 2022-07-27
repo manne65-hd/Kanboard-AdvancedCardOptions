@@ -65,6 +65,11 @@ class Plugin extends Base
         return '0.4.2';
     }
 
+    public function getCompatibleVersion()
+    {
+        return '>=1.2.20';
+    }
+
     public function getPluginHomepage()
     {
         return 'https://github.com/manne65-hd/Kanboard-AdvancedCardOptions';
