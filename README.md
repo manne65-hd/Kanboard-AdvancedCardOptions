@@ -12,6 +12,7 @@ Allows advanced control over the appearance _(and options)_ of the task-cards in
 - Allow to indicate due-today or overdue in collapsed view.
 - Allow to display tags and/or category in collapsed view.
 - Allow to display task-description and/or latest comment in separate textboxes in expanded view.
+  - Allow to dynamically display/hide these textboxes by right-clicking an according icon in the card's header.
   - Select more options for each of the 2 textboxes.
     - Define size of text. _(Small, Medium, Normal)_
     - Define max. number of lines before scrollbars appear.
@@ -51,7 +52,7 @@ ToDo ...
 
 Planned _(new)_ features
 --------
-- [ ] Add ability to toggle visibility of textboxes for description and/or latest-comment in expanded card-view.
+- [x] Add ability to toggle visibility of textboxes for description and/or latest-comment in expanded card-view.
 - [ ] Add an option to use the "condensed view" of tags + category in expanded card-view.
 
 Credits
@@ -69,7 +70,7 @@ Author
 Requirements
 ------------
 
-- Kanboard >= 1.2.18
+- Kanboard >= 1.2.20
 
 Installation
 ------------

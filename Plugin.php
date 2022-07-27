@@ -27,6 +27,8 @@ class Plugin extends Base
 
         //CSS
         $this->hook->on('template:layout:css', array('template' => 'plugins/AdvancedCardOptions/Assets/css/adv_card_options.css'));
+        //JS
+        $this->hook->on('template:layout:js', array('template' => 'plugins/AdvancedCardOptions/Assets/js/adv_card_options.js'));
     }
 
     public function onStartup() {
@@ -60,7 +62,12 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '0.4.0';
+        return '0.4.2';
+    }
+
+    public function getCompatibleVersion()
+    {
+        return '>=1.2.20';
     }
 
     public function getPluginHomepage()

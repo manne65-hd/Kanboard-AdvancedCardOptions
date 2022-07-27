@@ -137,6 +137,31 @@ $task['ACO'] = array(
                     <strong><?= '#'.$task['id'] ?></strong>
                 <?php endif ?>
 
+                <?php if ($ACO['expanded_description'] && !empty($task['description'])): ?>
+                    <span id="aco_icon_description_<?= $task['id'] ?>"
+                        title="<?= t('Right-click to hide task-description') ?>"
+                        title_show = "<?= t('Right-click to show task-description') ?>"
+                        title_hide = "<?= t('Right-click to hide task-description') ?>"
+                        class="aco_ToggleIcon_Textbox"
+                        toggle_type="description_"
+                        toggle_id="<?= $task['id'] ?>">
+                            <i class="fa fa-file-text-o"></i>
+                    </span>
+                <?php endif ?>
+
+                <?php if ($ACO['expanded_latest_comment'] && $task['nb_comments'] > 0): ?>
+                    <span id="aco_icon_latest_comment_<?= $task['id'] ?>"
+                        title="<?= t('Right-click to hide latest comment') ?>"
+                        title_show = "<?= t('Right-click to show latest comment') ?>"
+                        title_hide = "<?= t('Right-click to hide latest comment') ?>"
+                        class="aco_ToggleIcon_Textbox"
+                        toggle_type="latest_comment_"
+                        toggle_id="<?= $task['id'] ?>">
+                            <i class="fa fa-commenting"></i>
+                    </span>
+                <?php endif ?>
+
+
                 <?php if (! empty($task['owner_id'])): ?>
                     <span class="task-board-assignee">
                         <?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>

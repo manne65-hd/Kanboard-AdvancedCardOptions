@@ -1,3 +1,9 @@
+Version 0.4.2 (July 27, 2022)
+-------------------------------
+* Added options to dynamically show/hide task-description and/or latest comment in expanded view via right-click on an according icon in the card's header
+* Add missing CSRF checks (introduced with Kanboard 1.2.20)
+* Raised minimum compatibility to Kanboard >= 1.2.20
+
 Version 0.4.0 (May 10, 2021)
 -------------------------------
 * fixed bug where latest-comment-icon was not displayed in inactive state(no comments)
